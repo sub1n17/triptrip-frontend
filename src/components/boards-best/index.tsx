@@ -1,7 +1,7 @@
 'use client';
 
 import { useQuery } from '@apollo/client';
-import { FETCH_BOARDS } from '../boards-list/list/queries';
+// import { FETCH_BOARDS } from '../boards-list/list/queries';
 import Image from 'next/image';
 import style from './styles.module.css';
 import Link from 'next/link';
@@ -10,9 +10,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { FetchBoardsDocument } from '@/commons/graphql/graphql';
 
 export default function BoardBest() {
-    const { data } = useQuery(FETCH_BOARDS, {
+    const { data } = useQuery(FetchBoardsDocument, {
         variables: {
             page: 1,
             search: '',

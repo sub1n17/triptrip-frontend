@@ -6,26 +6,27 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import Image from 'next/image';
 import style from './styles.module.css';
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import Link from 'next/link';
 import DOMPurify from 'dompurify';
+import { FetchTravelproductsOfTheBestDocument } from '@/commons/graphql/graphql';
 
-const FETCH_PRODUCTS_BEST = gql`
-    query fetchTravelproductsOfTheBest {
-        fetchTravelproductsOfTheBest {
-            _id
-            name
-            contents
-            price
-            pickedCount
-            images
-            soldAt
-        }
-    }
-`;
+// const FETCH_PRODUCTS_BEST = gql`
+//     query fetchTravelproductsOfTheBest {
+//         fetchTravelproductsOfTheBest {
+//             _id
+//             name
+//             contents
+//             price
+//             pickedCount
+//             images
+//             soldAt
+//         }
+//     }
+// `;
 
 export default function TravelProductBest() {
-    const { data } = useQuery(FETCH_PRODUCTS_BEST);
+    const { data } = useQuery(FetchTravelproductsOfTheBestDocument);
 
     // 판매완료 안 된 상품만 보여주기
     const isSaleProduct =
@@ -67,7 +68,7 @@ export default function TravelProductBest() {
                     }}
                 >
                     {isSaleProduct?.map((el) => {
-                        const validImg = el.images.filter((img) => img && img !== null) ?? [];
+                        const validImg = el.images?.filter((img) => img && img !== null) ?? [];
                         return (
                             <SwiperSlide key={el._id}>
                                 <Link

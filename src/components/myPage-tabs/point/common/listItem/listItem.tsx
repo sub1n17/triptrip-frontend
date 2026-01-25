@@ -5,9 +5,9 @@ import style from './styles.module.css';
 interface IPointListItemProps {
     createdAt?: string;
     status?: string;
-    amount?: string;
-    balance?: string;
-    impUid?: string;
+    amount?: number;
+    balance?: number;
+    impUid?: string | null;
     product?: string;
     seller?: string;
     type?: string;

@@ -27,6 +27,7 @@ import { Dropdown, Space } from 'antd';
 import { EllipsisOutlined } from '@ant-design/icons';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import { IRecentProduct } from './queries';
 
 const imgSrc = {
     productDelete: '/images/product_delete.png',
@@ -98,10 +99,10 @@ export default function TravelProductDetail() {
             name: data?.fetchTravelproduct.name,
             image: validImg?.[0],
             price: data?.fetchTravelproduct.price,
-            seller: data?.fetchTravelproduct.seller.name,
+            seller: data?.fetchTravelproduct.seller?.name,
             isSold: data?.fetchTravelproduct.soldAt,
         };
-        const filtered = recent.filter((el) => el._id !== current._id); // 상품 중복 방지
+        const filtered = recent.filter((el: IRecentProduct) => el._id !== current._id); // 상품 중복 방지
         const updated = [current, ...filtered].slice(0, 20);
         localStorage.setItem('recent', JSON.stringify(updated));
     }, [data]);
@@ -183,7 +184,7 @@ export default function TravelProductDetail() {
                             </div>
                         </button>
 
-                        {((lat && lng) || address?.length > 0) && (
+                        {((lat && lng) || (address && address?.length > 0)) && (
                             <button>
                                 <Tooltip
                                     title={data?.fetchTravelproduct?.travelproductAddress?.address}
@@ -225,7 +226,7 @@ export default function TravelProductDetail() {
                         </button>
 
                         {accessToken &&
-                            data?.fetchTravelproduct.seller._id ===
+                            data?.fetchTravelproduct.seller?._id ===
                                 userData?.fetchUserLoggedIn?._id && (
                                 <button className={style.btn_icon}>
                                     <Dropdown menu={{ items }} trigger={['hover', 'click']}>
@@ -356,7 +357,7 @@ export default function TravelProductDetail() {
                                 ></Image>
                             </div>
                             <div className={style.seller}>
-                                {data?.fetchTravelproduct.seller.name ?? ''}
+                                {data?.fetchTravelproduct.seller?.name ?? ''}
                             </div>
                         </div>
                     </div>
@@ -415,7 +416,7 @@ export default function TravelProductDetail() {
                             ></Image>
                         </div>
                         <div className={style.seller}>
-                            {data?.fetchTravelproduct.seller.name ?? ''}
+                            {data?.fetchTravelproduct.seller?.name ?? ''}
                         </div>
                     </div>
                     <div className={style.mob_btnWrapper}>
@@ -460,7 +461,7 @@ export default function TravelProductDetail() {
                                 ></Image>
                             </div>
                         </button>
-                        {((lat && lng) || address?.length > 0) && (
+                        {((lat && lng) || (address && address?.length > 0)) && (
                             <button>
                                 <div className={style.btn_icon}>
                                     <Popover
@@ -490,7 +491,7 @@ export default function TravelProductDetail() {
                         </button>
 
                         {accessToken &&
-                            data?.fetchTravelproduct.seller._id ===
+                            data?.fetchTravelproduct.seller?._id ===
                                 userData?.fetchUserLoggedIn?._id && (
                                 <button className={style.btn_icon}>
                                     <Dropdown menu={{ items }} trigger={['click']}>
@@ -571,7 +572,7 @@ export default function TravelProductDetail() {
             </div>
             {/*  description */}
 
-            {((lat && lng) || address?.length > 0) && (
+            {((lat && lng) || (address && address?.length > 0)) && (
                 <div className={style.location_wrapper}>
                     <div className={style.section_title}>상세 위치</div>
                     <div className={style.location} id="map"></div>

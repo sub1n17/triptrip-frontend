@@ -6,9 +6,9 @@ import Image from 'next/image';
 
 import { useEffect, useState } from 'react';
 // import Search from '../boards-list/search';
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { FetchTravelproductsQuery } from '@/commons/graphql/graphql';
+import { FetchTravelproductsDocument, FetchTravelproductsQuery } from '@/commons/graphql/graphql';
 import Search from '@/components/boards-list/search';
 import Link from 'next/link';
 
@@ -25,35 +25,36 @@ const imgSrc = {
     recent03: '/images/recent03.jpg',
 };
 
-const FETCH_TRAVEL_PRODUCTS = gql`
-    query fetchTravelproducts($isSoldout: Boolean, $page: Int, $search: String) {
-        fetchTravelproducts(isSoldout: $isSoldout, page: $page, search: $search) {
-            _id
-            name
-            remarks
-            contents
-            price
-            tags
-            images
-            pickedCount
-            travelproductAddress {
-                zipcode
-                address
-                addressDetail
-                lat
-                lng
-            }
-            seller {
-                _id
-                email
-                name
-            }
-            soldAt
-            createdAt
-            updatedAt
-        }
-    }
-`;
+// const FETCH_TRAVEL_PRODUCTS = gql`
+//     query fetchTravelproducts($isSoldout: Boolean, $page: Int, $search: String) {
+//         fetchTravelproducts(isSoldout: $isSoldout, page: $page, search: $search) {
+//             _id
+//             name
+//             remarks
+//             contents
+//             price
+//             tags
+//             images
+//             pickedCount
+//             travelproductAddress {
+//                 zipcode
+//                 address
+//                 addressDetail
+//                 lat
+//                 lng
+//             }
+//             seller {
+//                 _id
+//                 email
+//                 name
+//             }
+//             soldAt
+//             createdAt
+//             updatedAt
+//         }
+//     }
+// `;
+
 export default function TravelProductList() {
     const searchParams = useSearchParams();
 
@@ -86,7 +87,7 @@ export default function TravelProductList() {
         data,
         fetchMore: fetchMoreOnSale,
         loading: loadingOnSale, // 검색어 입력 시 새테이터 가져오면서 일시적으로 undefined돼서 깜빡이는 현상 방지
-    } = useQuery(FETCH_TRAVEL_PRODUCTS, {
+    } = useQuery(FetchTravelproductsDocument, {
         variables: {
             isSoldout: false,
             search: travelQueryString.search,
@@ -98,7 +99,7 @@ export default function TravelProductList() {
         data: soldOutData,
         fetchMore: fetchMoreSoldOut,
         loading: loadingSoldOut,
-    } = useQuery(FETCH_TRAVEL_PRODUCTS, {
+    } = useQuery(FetchTravelproductsDocument, {
         variables: {
             isSoldout: true,
             search: travelQueryString.search,
@@ -123,11 +124,11 @@ export default function TravelProductList() {
     const onClickMore = () => {
         // 예약 가능 숙소
         if (travelQueryString.tabMenu === 'onSale') {
-            if (data.fetchTravelproducts.length === 0) return;
+            if (data?.fetchTravelproducts.length === 0) return;
             fetchMoreOnSale({
                 variables: {
                     // page: Number(travelQueryString.page) + 1, // 페이지가 바뀌면서 fetchMore이 아니라 page:2를 변수로 fetch시켜서 누적안됨 쿼리에 page 넣지 말기
-                    page: Math.ceil(data.fetchTravelproducts.length / 10) + 1,
+                    page: Math.ceil((data?.fetchTravelproducts?.length ?? 0) / 10) + 1,
                     search: travelQueryString.search,
                     isSoldout: false,
                 },
@@ -158,10 +159,10 @@ export default function TravelProductList() {
             }));
         } else {
             // 예약 마감 숙소
-            if (soldOutData.fetchTravelproducts.length === 0) return;
+            if (soldOutData?.fetchTravelproducts.length === 0) return;
             fetchMoreSoldOut({
                 variables: {
-                    page: Math.ceil(soldOutData.fetchTravelproducts.length / 10) + 1,
+                    page: Math.ceil((soldOutData?.fetchTravelproducts.length ?? 0) / 10) + 1,
                     search: travelQueryString.search,
                     isSoldout: true,
                 },
@@ -407,12 +408,13 @@ export default function TravelProductList() {
 
                 {/* 더보기 */}
                 {travelQueryString.tabMenu === 'onSale'
-                    ? data?.fetchTravelproducts.length > travelQueryString.productCount && (
+                    ? (data?.fetchTravelproducts.length ?? 0) > travelQueryString.productCount && (
                           <button className={style.more} onClick={onClickMore}>
                               더보기
                           </button>
                       )
-                    : soldOutData?.fetchTravelproducts.length > travelQueryString.soldOutCount && (
+                    : (soldOutData?.fetchTravelproducts.length ?? 0) >
+                          travelQueryString.soldOutCount && (
                           <button className={style.more} onClick={onClickMore}>
                               더보기
                           </button>

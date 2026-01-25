@@ -85,3 +85,18 @@ export const DELETE_PRODUCT = gql`
         deleteTravelproduct(travelproductId: $travelproductId)
     }
 `;
+
+export interface IKakaoAddressResult {
+    address_name: string;
+    x: string;
+    y: string;
+}
+
+export interface IRecentProduct {
+    _id: string;
+    name: string;
+    image?: string;
+    price?: number;
+    seller?: string;
+    isSold?: string | null;
+}

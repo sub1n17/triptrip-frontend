@@ -1,27 +1,28 @@
 'use client';
 
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import PointListItem from '../common/listItem/listItem';
 import style from './styles.module.css';
+import { FetchPointTransactionsOfBuyingDocument } from '@/commons/graphql/graphql';
 
-const FETCH_POINT_BUYING = gql`
-    query fetchPointTransactionsOfBuying($search: String, $page: Int) {
-        fetchPointTransactionsOfBuying(search: $search, page: $page) {
-            createdAt
-            travelproduct {
-                name
-                # seller {
-                #     name
-                # }
-            }
-            amount
-            balance
-        }
-    }
-`;
+// const FETCH_POINT_BUYING = gql`
+//     query fetchPointTransactionsOfBuying($search: String, $page: Int) {
+//         fetchPointTransactionsOfBuying(search: $search, page: $page) {
+//             createdAt
+//             travelproduct {
+//                 name
+//                 # seller {
+//                 #     name
+//                 # }
+//             }
+//             amount
+//             balance
+//         }
+//     }
+// `;
 
 export default function Buy() {
-    const { data, loading } = useQuery(FETCH_POINT_BUYING, {
+    const { data, loading } = useQuery(FetchPointTransactionsOfBuyingDocument, {
         variables: { search: '', page: 1 },
     });
     if (loading) return null;
@@ -46,7 +47,7 @@ export default function Buy() {
                                 key={index}
                                 type="buy"
                                 createdAt={el.createdAt}
-                                product={el.travelproduct.name}
+                                product={el.travelproduct?.name}
                                 amount={el.amount}
                                 balance={el.balance}
                                 // seller={el?.travelproduct.seller}

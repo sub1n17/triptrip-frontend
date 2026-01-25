@@ -4,13 +4,18 @@ import { useParams, usePathname, useRouter, useSearchParams } from 'next/navigat
 import {
     CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING,
     DELETE_PRODUCT,
-    FETCH_TRAVEL_PRODUCT,
-    FETCH_USER_LOGIN,
+    // FETCH_TRAVEL_PRODUCT,
+    // FETCH_USER_LOGIN,
+    IKakaoAddressResult,
     TOGGLE_TRAVEL_PRODUCT_PICK,
 } from './queries';
 import { useEffect, useState } from 'react';
 import { message, Modal } from 'antd';
-import { FetchTravelproductDocument, FetchTravelproductsDocument } from '@/commons/graphql/graphql';
+import {
+    FetchTravelproductDocument,
+    FetchTravelproductsDocument,
+    FetchUserLoggedInDocument,
+} from '@/commons/graphql/graphql';
 import { useTokenStore } from '@/commons/stores/token';
 
 // declare const window: Window & {
@@ -23,13 +28,12 @@ export default function UseTravelProductDetail() {
 
     const { accessToken } = useTokenStore();
 
-    const { data: userData } = useQuery(FETCH_USER_LOGIN, {
+    const { data: userData } = useQuery(FetchUserLoggedInDocument, {
         // skip: !accessToken,
     });
-
-    const { data } = useQuery(FETCH_TRAVEL_PRODUCT, {
+    const { data } = useQuery(FetchTravelproductDocument, {
         variables: {
-            travelproductId: params.productId,
+            travelproductId: String(params.productId),
         },
     });
 
@@ -112,7 +116,7 @@ export default function UseTravelProductDetail() {
 
     // 구매하기
     const [create_point_transaction_of_buying_and_selling] = useMutation(
-        CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING
+        CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING,
     );
 
     const [isBuyModalOpen, setIsBuyModalOpen] = useState(false);
@@ -172,9 +176,9 @@ export default function UseTravelProductDetail() {
         if (!data) return;
 
         // 이미지 썸네일 메인이미지 바꾸기 (처음: 0번째 인덱스)
-        if (data?.fetchTravelproduct?.images?.length > 0) {
+        if ((data?.fetchTravelproduct?.images?.length ?? 0) > 0) {
             // 첫번째 이미지는 첨부하지 않고 두번째에 첨부할 때 null 제거 후 존재하는 사진만
-            const valid = data?.fetchTravelproduct?.images.filter((img) => img && img !== 'null');
+            const valid = data?.fetchTravelproduct?.images?.filter((img) => img && img !== 'null');
             if (!valid) return;
             setActiveImg(valid[0]);
         }
@@ -213,25 +217,28 @@ export default function UseTravelProductDetail() {
                 if (address) {
                     const geocoder = new window.kakao.maps.services.Geocoder();
 
-                    geocoder.addressSearch(address, (result, status) => {
-                        if (status !== window.kakao.maps.services.Status.OK) return;
+                    geocoder.addressSearch(
+                        address,
+                        (result: IKakaoAddressResult[], status: 'OK' | 'ZERO_RESULT' | 'ERROR') => {
+                            if (status !== window.kakao.maps.services.Status.OK) return;
 
-                        const coords = new window.kakao.maps.LatLng(
-                            Number(result[0].y),
-                            Number(result[0].x)
-                        );
+                            const coords = new window.kakao.maps.LatLng(
+                                Number(result[0].y),
+                                Number(result[0].x),
+                            );
 
-                        const map = new window.kakao.maps.Map(mapContainer, {
-                            center: coords,
-                            level: 3,
-                        });
+                            const map = new window.kakao.maps.Map(mapContainer, {
+                                center: coords,
+                                level: 3,
+                            });
 
-                        const marker = new window.kakao.maps.Marker({
-                            position: coords,
-                        });
+                            const marker = new window.kakao.maps.Marker({
+                                position: coords,
+                            });
 
-                        marker.setMap(map);
-                    });
+                            marker.setMap(map);
+                        },
+                    );
                 }
             });
         };

@@ -13,6 +13,8 @@ interface RecentProduct {
     isSold: boolean | null;
     price: number;
     seller: string;
+    remarks?: string;
+    tags?: string[];
 }
 
 export default function UseTravelProductRecent({ isOpen }: IRecentMobileProps = {}) {

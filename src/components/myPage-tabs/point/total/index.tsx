@@ -1,23 +1,23 @@
 'use client';
 
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import PointListItem from '../common/listItem/listItem';
 import style from './styles.module.css';
+import { FetchPointTransactionsDocument } from '@/commons/graphql/graphql';
 
-const FETCH_POINT_TRANSACTIONS = gql`
-    query fetchPointTransactions($search: String, $page: Int) {
-        fetchPointTransactions(search: $search, page: $page) {
-            _id
-            createdAt
-            status
-            amount
-            balance
-        }
-    }
-`;
-
+// const FETCH_POINT_TRANSACTIONS = gql`
+//     query fetchPointTransactions($search: String, $page: Int) {
+//         fetchPointTransactions(search: $search, page: $page) {
+//             _id
+//             createdAt
+//             status
+//             amount
+//             balance
+//         }
+//     }
+// `;
 export default function Total() {
-    const { data } = useQuery(FETCH_POINT_TRANSACTIONS, {
+    const { data } = useQuery(FetchPointTransactionsDocument, {
         variables: { search: '', page: 1 },
     });
 

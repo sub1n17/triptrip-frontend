@@ -1,22 +1,22 @@
 'use client';
 
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import PointListItem from '../common/listItem/listItem';
 import style from './styles.module.css';
+import { FetchPointTransactionsOfLoadingDocument } from '@/commons/graphql/graphql';
 
-const FETCH_POINT_LOADING = gql`
-    query fetchPointTransactionsOfLoading($search: String, $page: Int) {
-        fetchPointTransactionsOfLoading(search: $search, page: $page) {
-            createdAt
-            impUid
-            amount
-            balance
-        }
-    }
-`;
-
+// const FETCH_POINT_LOADING = gql`
+//     query fetchPointTransactionsOfLoading($search: String, $page: Int) {
+//         fetchPointTransactionsOfLoading(search: $search, page: $page) {
+//             createdAt
+//             impUid
+//             amount
+//             balance
+//         }
+//     }
+// `;
 export default function Charge() {
-    const { data } = useQuery(FETCH_POINT_LOADING, {
+    const { data } = useQuery(FetchPointTransactionsOfLoadingDocument, {
         variables: { search: '', page: 1 },
     });
 
