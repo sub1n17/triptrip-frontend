@@ -1,0 +1,25 @@
+.menu_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.menuBtn_wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.arr_img {
+    width: 20px;
+    height: 20px;
+}
+
+.active {
+    background-color: #F2F2F2;
+    border-radius: 8px;
+    font-weight: 600;
+
+}

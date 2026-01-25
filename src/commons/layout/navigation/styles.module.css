@@ -1,0 +1,14 @@
+.mobNav {
+    display: none;
+}
+
+/* 모바일 */
+@media (max-width:768px) {
+    .pcNav {
+        display: none;
+    }
+
+    .mobNav {
+        display: block;
+    }
+}

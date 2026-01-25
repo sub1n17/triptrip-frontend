@@ -1,0 +1,72 @@
+.flex_wrap {
+    display: flex;
+    gap: 8px;
+    text-align: center;
+}
+
+.list_title {
+    padding: 16px 24px;
+    font-weight: 500;
+    color: #1C1C1C;
+}
+
+.board_list {
+    border: 1px solid #F2F2F2;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 14px;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.board_number {
+    width: 64px;
+}
+
+.board_title {
+    width: 848px;
+    text-align: left;
+}
+
+.board_writer {
+    width: 100px;
+}
+
+.board_date {
+    width: 100px;
+}
+
+.board_wrap .board_number {
+    color: #919191;
+    font-weight: 300;
+}
+
+.board_wrap .board_title {
+    font-weight: 500;
+}
+
+.board_wrap .board_writer {
+    font-weight: 300;
+    color: #333333;
+}
+
+.board_wrap .board_date {
+    font-weight: 300;
+    color: #919191;
+}
+
+.delete {
+    position: absolute;
+    top: 10px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+.board_list:hover .delete {
+    opacity: 1;
+    visibility: visible;
+}

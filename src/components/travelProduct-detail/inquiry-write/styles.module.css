@@ -1,0 +1,99 @@
+.title_wrapper {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.chat_img {
+    width: 24px;
+    height: 24px;
+}
+
+.title {
+    font-weight: 600;
+}
+
+.textarea {
+    border-radius: 8px;
+    border: 1px solid #D4D3D3;
+    padding: 12px 16px;
+    height: 144px;
+    width: 100%;
+    margin-block: 24px 16px;
+}
+
+.answer_textarea {
+    border-radius: 8px;
+    border: 1px solid #D4D3D3;
+    padding: 12px 16px;
+    height: 144px;
+    width: 100%;
+    margin-block: 12px 16px;
+}
+
+.textarea:focus {
+    outline: none;
+}
+
+.textarea::placeholder {
+    color: #ABABAB;
+}
+
+.btn_wrapper {
+    display: flex;
+    justify-content: end;
+    gap: 16px;
+}
+
+.btn_wrapper button {
+    height: 48px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.cancel_btn {
+    width: 64px;
+    border: 1px solid #000000;
+    color: #000000;
+    background-color: #FFFFFF;
+}
+
+.inquiry_btn {
+    width: 99px;
+    background-color: #000;
+    color: #FFFFFF;
+
+}
+
+/* textarea 공백일 때 버튼 비활성화 */
+.inquiry_disabled {
+    width: 99px;
+    background-color: #C7C7C7;
+    color: #E4E4E4;
+}
+
+/* 모바일 */
+@media (max-width:768px) {
+
+    .inquiry_btn,
+    .inquiry_disabled {
+        width: 76px;
+    }
+
+    .textarea {
+        margin-block: 8px 16px;
+    }
+
+    .cancel_btn {
+        width: 49px;
+    }
+
+    .btn_wrapper button {
+        height: 40px;
+    }
+
+    .btn_wrapper button {
+        height: 40px;
+    }
+}

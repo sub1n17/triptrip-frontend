@@ -1,0 +1,94 @@
+.empty {
+    font-size: 14px;
+    text-align: center;
+    color: #999999;
+    width: calc(100vw - 40px);
+}
+
+.dim_layer {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    background-color: #00000080;
+    z-index: 2;
+    opacity: 0;
+    transition: all 0.3s;
+    pointer-events: none;
+}
+
+.dim_layer.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mobRecent_container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 100vh;
+    border-radius: 16px 16px 0 0;
+    background-color: #FFFFFF;
+    padding-block: 20px 0;
+    transform: translateY(100%);
+    transition: all 0.3s;
+}
+
+.mobRecent_container.show {
+    transform: translateY(0);
+}
+
+.mobRecent_container.show body {
+    overflow: hidden;
+}
+
+.recent_top {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.title {
+    font-weight: 600;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    /* font-size: 24px; */
+    /* width: 44px;
+    height: 44px; */
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+.closeBtn svg {
+    font-size: 14px;
+}
+
+.recent_wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 12px;
+    overflow-y: auto;
+    height: 100%;
+    padding-inline: 20px;
+    padding-block: 20px 80px;
+    /* 스크롤바 숨기기 - IE, Edge */
+    -ms-overflow-style: none;
+    /* 스크롤바 숨기기 -Firefox */
+    scrollbar-width: none;
+
+}
+
+/* 스크롤바 숨기기 - Chrome, Safari, Opera */
+.recent_wrapper::-webkit-scrollbar {
+    display: none;
+}

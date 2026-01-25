@@ -1,0 +1,112 @@
+.boardBest {
+    margin-bottom: 2.5rem;
+}
+
+.best_txt {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.best_wrapper {
+    display: flex;
+    gap: 2rem;
+
+}
+
+.best_board {
+    flex: 1;
+    display: flex;
+    gap: 0.5rem;
+
+}
+
+.txt_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.imgBox {
+    width: 112px;
+    height: 152px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+
+.title {
+    font-weight: 700;
+    color: #1C1C1C;
+    margin-bottom: 8px;
+}
+
+.profile_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+}
+
+.like_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.like {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.likeCount {
+    color: #F66A6A;
+}
+
+.date {
+    color: #777777;
+}
+
+.profile,
+.best {
+    width: 24px;
+    height: 24px;
+    position: relative;
+}
+
+.mob_best_wrapper {
+    display: none;
+}
+
+/* 태블릿 */
+@media (max-width:1024px) {
+    .best_wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 모바일 */
+@media (max-width:768px) {
+    .mob_best_wrapper {
+        display: block;
+        margin-right: -20px;
+    }
+
+    .best_wrapper {
+        display: none;
+    }
+
+    .best_txt {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .best_board {
+        font-size: 14px;
+    }
+
+}

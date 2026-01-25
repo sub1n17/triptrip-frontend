@@ -1,0 +1,78 @@
+.inquiry_wrapper {
+    padding-block: 40px;
+    border-top: 1px solid #E4E4E4;
+}
+
+.reply_img {
+    width: 24px;
+    height: 24px;
+}
+
+.profileBtn_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn_wrapper {
+    display: flex;
+    gap: 8px;
+}
+
+.btn_wrapper button {
+    width: 20px;
+    height: 20px;
+}
+
+.profile_wrapper {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.profile_img {
+    width: 24px;
+    height: 24px;
+}
+
+.profile_txt {
+    font-size: 14px;
+    font-weight: 300;
+    color: #5F5F5F;
+}
+
+.inquiry {
+    margin-block: 8px;
+
+}
+
+.date {
+    font-size: 14px;
+
+    color: #818181;
+}
+
+.reply_wrapper {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.reply_img {
+    width: 24px;
+    height: 24px;
+}
+
+.reply {
+    font-size: 14px;
+    font-weight: 300;
+    color: #333333;
+}
+
+/* 모바일 */
+@media (max-width:768px) {
+    .inquiry_wrapper {
+        padding-block: 24px;
+    }
+}

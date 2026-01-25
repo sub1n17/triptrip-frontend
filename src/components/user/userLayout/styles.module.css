@@ -1,0 +1,35 @@
+.layout_wrapper {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.input_wrapper {
+    width: 21%;
+    min-width: 400px;
+}
+
+.right_img {
+    flex: 1;
+}
+
+.right_img img {
+    object-fit: cover;
+    height: 100%;
+}
+
+/* 모바일 */
+@media (max-width:768px) {
+    .right_img {
+        display: none;
+    }
+
+    .input_wrapper {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .logIn_wrapper {
+        padding-inline: 20px;
+    }
+}

@@ -1,0 +1,607 @@
+.detail_container {
+    max-width: 1280px;
+    margin: 0 auto;
+    margin-block: 120px 40px;
+    /* pc네비 높이 80px + 네비 사이 간격 40px = 120px */
+
+}
+
+.title_wrapper {
+    margin-bottom: 24px;
+}
+
+.title_flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #000000;
+}
+
+.btn_wrapper {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.btn_icon {
+    width: 24px;
+    height: 24px;
+    position: relative;
+}
+
+.btn_icon_img {
+    object-fit: contain;
+}
+
+.bookmark_btn {
+    width: 53px;
+    height: 32px;
+    border-radius: 8px;
+    background-color: #00000066;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0px 0px 8px #00000040;
+}
+
+.bookmark_img {
+    width: 24px;
+    height: 24px;
+    position: relative;
+}
+
+.bookmark_btn div {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+
+}
+
+.summary {
+    font-weight: 500;
+    color: #777777;
+    margin-block: 8px;
+}
+
+.tag span {
+    font-weight: 500;
+    color: #2974E5;
+}
+
+.product_center {
+    display: flex;
+    gap: 24px;
+}
+
+.img_wrapper {
+    display: flex;
+    gap: 24px;
+    flex: 1;
+    /* width: 100%; */
+
+}
+
+.productMain_img {
+    width: 100%;
+    /* aspect-ratio: 4/3; */
+    /* aspect-ratio: 4/1; */
+    /* height: 480px; */
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.productSmall_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 20%;
+}
+
+.productSmall_img {
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    /* flex: 1; */
+    width: 100%;
+}
+
+.productSmall_img.fill {
+    height: 100%;
+}
+
+.productSmall_img.auto {
+    aspect-ratio: 4 / 3;
+}
+
+.priceSeller_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 32%;
+    /* flex: 1; */
+}
+
+.price_wrapper {
+    border: 1px solid #E4E4E4;
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000;
+}
+
+/* .price span {} */
+.caution_wrapper {
+    margin-block: 8px 20px;
+}
+
+
+.list_circle {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    color: #5F5F5F;
+}
+
+.description_txt {
+    font-size: 14px;
+    color: #5F5F5F;
+}
+
+.buy_btn {
+    width: 100%;
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: 8px;
+    background-color: #2974E5;
+}
+
+.disabled_btn {
+    width: 100%;
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: 8px;
+    background-color: #b0b0b0;
+    color: #eeeeee;
+}
+
+.seller_wrapper {
+    border-radius: 8px;
+    background-color: #F2F2F2;
+    padding: 24px;
+}
+
+.seller_title {
+    font-size: 1.25rem;
+    font-size: 700;
+    color: #000;
+    margin-bottom: 12px;
+}
+
+.profile_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.profile_img {
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+
+.seller {
+    font-weight: 500;
+    color: #333333;
+}
+
+.description_wrapper {
+    border-top: 1px solid #D4D3D3;
+    border-bottom: 1px solid #D4D3D3;
+    padding-block: 40px;
+    margin-block: 40px;
+}
+
+.section_title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #333333;
+    margin-bottom: 16px;
+}
+
+.description {
+    color: #333333;
+}
+
+.location_wrapper {
+    margin-bottom: 40px;
+}
+
+.location {
+    width: 100%;
+    height: 400px;
+}
+
+.detail_btn_wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+
+.detail_btn_wrapper>button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 105px;
+    height: 40px;
+    cursor: pointer;
+    justify-content: center;
+    border: 1px solid #000;
+    border-radius: 8px;
+}
+
+.detail_btn_wrapper>div p {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* .description :where(h1, h2, h3, h4, h5, h6) .description 내부의 모든 제목 태그를 선택  */
+.description :where(h1, h2, h3, h4, h5, h6) {
+    font-size: revert;
+    /* revert : 브라우저 기본값으로 되돌리기 */
+    font-weight: revert;
+}
+
+.pointModal :global(.ant-modal-body) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+}
+
+.modal_title {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.modal_content {
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333333;
+}
+
+.modal_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+}
+
+.modal_btn button {
+    min-width: 96px;
+    max-width: 120px;
+    border-radius: 8px;
+    padding: 8px 12px;
+
+}
+
+.btn_cancel {
+    background-color: #FFFFFF;
+    border: 1px solid#d9d9d9;
+    transition: all 0.2s;
+}
+
+.btn_cancel:hover {
+    border-color: #d9d9d9;
+    color: rgb(0 0 0 / 75%);
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.btn_ok {
+    background-color: #2974E5;
+    border: 1px solid transparent;
+    color: #FFFFFF;
+    transition: all 0.2s;
+}
+
+.btn_ok:hover {
+    background-color: #4096ff;
+
+}
+
+:global(.ant-btn-variant-outlined):not(.ant-btn-dangerous):not(:disabled):hover {
+    border-color: #d9d9d9;
+    color: rgb(0 0 0 / 75%);
+    background: rgba(0, 0, 0, 0.02);
+}
+
+/* .mob_swiper,
+.mob_noImg,
+.mob_profileBar {
+    display: none;
+} 
+
+.mob_location {
+    display: none;
+}
+*/
+.mob_wrapper {
+    display: none;
+}
+
+.mob_location {
+    display: none;
+}
+
+.mob_buyBtnWrapper {
+    display: none;
+}
+
+/* 태블릿 */
+@media (max-width:1024px) {
+    .detail_container {
+        padding-inline: 20px;
+    }
+
+
+    .description_txt {
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+
+    .location {
+        height: 280px;
+    }
+
+    .btn_icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .btn_icon_img {
+        /* max-width: 55%; */
+        max-width: 22px;
+        height: auto !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%);
+    }
+
+    .link_img,
+    .delete_img {
+        max-width: 32px;
+    }
+
+    .edit_img {
+        max-width: 30px;
+    }
+
+
+    .mob_location {
+        display: block;
+    }
+
+    .pc_location {
+        display: none;
+    }
+
+    /* 북마크 카운트 영역에 고정 너비 주기 */
+    .bookmark_btn div {
+        min-width: 0.7rem;
+    }
+}
+
+/* 모바일 */
+@media (max-width:768px) {
+    .mob_wrapper {
+        display: block;
+    }
+
+    .product_center {
+        flex-direction: column;
+    }
+
+    .productMain_img {
+        aspect-ratio: 360 / 318;
+    }
+
+    .mob_profileBar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #1C1C1C;
+        padding: 0.75rem 1.25rem;
+        margin-inline: -20px;
+        margin-bottom: 20px;
+    }
+
+    .mob_profileBar .seller {
+        color: #FFFFFF;
+    }
+
+    .mob_profileBar .profile_img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .bookmark_btn {
+        background-color: initial;
+        box-shadow: none;
+        width: 100%;
+        /* width: 44px; */
+        height: auto;
+    }
+
+    .bookmark_img {
+        width: 24px;
+        aspect-ratio: 1 / 1;
+        height: auto;
+
+    }
+
+    .more_btn {
+        width: 24px;
+        height: 20px;
+    }
+
+    .btn_icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    /* .link_img {
+        width: 24px;
+    } */
+
+    .location_img {
+        width: 65%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .mob_location img {
+        max-width: 16px;
+    }
+
+    .mob_btnWrapper {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .mob_btnWrapper button {
+        filter: brightness(0) invert(1);
+    }
+
+    .ant-space-item svg {
+        font-size: 24px;
+    }
+
+    .product_center {
+        display: none;
+    }
+
+    .mob_swiper {
+        margin-left: -20px !important;
+        margin-right: -20px !important;
+        min-height: 16.875rem;
+        aspect-ratio: 4/ 3;
+    }
+
+    .mob_swiper :global(.swiper-pagination) {
+        width: auto;
+        left: auto;
+        right: 20px;
+        bottom: 20px;
+        padding: 4px 12px;
+        border-radius: 100px;
+        background-color: #00000099;
+        color: #F2F2F2;
+    }
+
+    .mob_noImg {
+        display: block;
+        position: relative;
+        height: 16.875rem;
+        margin-inline: -20px;
+    }
+
+    .btn_wrapper {
+        display: none;
+    }
+
+    .title_wrapper {
+        display: none;
+    }
+
+    .summary {
+        margin-block: 4px 0;
+    }
+
+    .location {
+        height: 144px;
+    }
+
+    .mob_productWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .mob_titleWrapper {
+        border-bottom: 2px solid #1C1C1C;
+        padding-bottom: 16px;
+    }
+
+    .mob_priceWrapper {
+        display: flex;
+        justify-content: end;
+    }
+
+    .caution_wrapper {
+        background-color: #F2F2F2;
+        padding: 12px;
+        border-radius: 8px;
+        margin-block: 12px 0;
+    }
+
+    .description_txt {
+        font-size: 12px;
+    }
+
+    .description_wrapper {
+        margin-block: 16px;
+        padding-block: 16px;
+    }
+
+    .detail_container {
+        margin-block: 40px;
+
+    }
+
+    .mob_buyBtnWrapper {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+
+        padding-block: 16px;
+        padding-inline: 20px;
+        border-top: 1px solid #F2F2F2;
+        z-index: 999;
+        background-color: #FFFFFF;
+    }
+
+    .mob_wrapper .disabled_btn,
+    .mob_wrapper .buy_btn {
+        height: 40px;
+
+        font-size: 14px;
+    }
+}

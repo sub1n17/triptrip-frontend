@@ -1,0 +1,26 @@
+.tabBtn_wrapper {
+    display: flex;
+    justify-content: start;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.tabBtn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    color: #525252;
+    font-weight: 500;
+}
+
+.active {
+    background-color: #000000;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+/* 모바일 */
+@media (max-width:768px) {
+    .tabBtn {
+        padding: 4px 8px;
+    }
+}

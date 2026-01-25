@@ -1,0 +1,114 @@
+ .noBoards {
+     text-align: center;
+     color: #999999;
+     padding-block: 1rem;
+ }
+
+ .flex_wrap {
+     display: flex;
+     gap: 8px;
+     text-align: center;
+ }
+
+ .list_title {
+     padding: 1rem 1.5rem;
+     font-weight: 500;
+     color: #1C1C1C;
+ }
+
+ .board_list {
+     border: 1px solid #F2F2F2;
+     border-radius: 8px;
+     padding: 0.75rem 1.5rem;
+     font-size: 14px;
+     margin-bottom: 12px;
+     position: relative;
+     width: 100%;
+ }
+
+ .board_number {
+     max-width: 64px;
+     width: 6%;
+ }
+
+ .board_title {
+     max-width: 848px;
+     text-align: left;
+     flex: 1;
+     white-space: nowrap;
+     text-overflow: ellipsis;
+     overflow: hidden;
+ }
+
+ .board_writer {
+     max-width: 100px;
+     width: 21%;
+ }
+
+ .board_date {
+     max-width: 100px;
+     width: 21%;
+ }
+
+ .board_wrap .board_number {
+     color: #919191;
+     font-weight: 300;
+ }
+
+ .board_wrap .board_title {
+     font-weight: 500;
+ }
+
+ .board_wrap .board_writer {
+     font-weight: 300;
+     color: #333333;
+ }
+
+ .board_wrap .board_date {
+     font-weight: 300;
+     color: #919191;
+ }
+
+ /* .delete {
+    position: absolute;
+    top: 10px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+.board_list:hover .delete {
+    opacity: 1;
+    visibility: visible;
+} */
+
+ /* 모바일 */
+ @media (max-width:768px) {
+     .board_wrapper {
+         min-width: initial;
+     }
+
+     .flex_wrap {
+         font-size: 12px;
+     }
+
+     .board_number {
+         width: 14%;
+         min-width: 21px;
+     }
+
+     .board_list {
+         padding: 8px;
+     }
+
+     .list_title {
+         padding: 4px 8px;
+     }
+
+     .board_date {
+         width: 27%;
+     }
+ }

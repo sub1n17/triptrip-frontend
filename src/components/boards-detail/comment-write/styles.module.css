@@ -1,0 +1,178 @@
+.comment_wrap {
+    margin-block: 40px;
+}
+
+.comment_title {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.title_txt {
+    font-weight: 600;
+}
+
+.star_Img {
+    margin-block: 1.5rem;
+}
+
+.comment_form {
+    margin-bottom: 16px;
+}
+
+.comment_form input,
+.comment_form textarea {
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #d4d3d3;
+}
+
+.form_top {
+    margin-bottom: 16px;
+    display: flex;
+    gap: 16px;
+}
+
+.txt_wrap {
+    display: flex;
+    align-items: center;
+}
+
+.form_txt {
+    color: #333333;
+    font-weight: 500;
+    margin-right: 4px;
+}
+
+.comment_form span {
+    color: #F66A6A;
+    font-weight: 500;
+}
+
+.form_top input {
+    margin-top: 8px;
+    width: 312px;
+    height: 48px;
+}
+
+.form_top input::placeholder {
+    color: #ABABAB;
+    font-weight: 400;
+
+}
+
+.form_bot {
+    position: relative;
+}
+
+.form_bot textarea {
+    width: 100%;
+    height: 144px;
+}
+
+/* .comment_length {
+    position: absolute;
+    right: 16px;
+    bottom: 12px;
+    color: #ABABAB;
+    font-weight: 500;
+} */
+
+.btn_wrap {
+    display: flex;
+    justify-content: end;
+}
+
+.comment_submit {
+    width: 99px;
+    height: 48px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    background-color: #C7C7C7;
+    color: #E4E4E4;
+}
+
+.comment_submit.active {
+    background-color: #2974E5;
+    color: #FFFFFF;
+}
+
+.comment_edit {
+    width: 99px;
+    height: 48px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.125rem;
+    background-color: #C7C7C7;
+    color: #E4E4E4;
+}
+
+.comment_edit_cancel {
+    width: 64px;
+    height: 48px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.125rem;
+    background-color: #FFFFFF;
+    border: 1px solid black;
+    margin-right: 16px;
+}
+
+/* .comment_edit.active {
+    color: #FFFFFF;
+    background-color: #000000;
+} */
+.editActive {
+    color: #FFFFFF;
+    background-color: #000000;
+}
+
+.form_bot .txt_wrap {
+    display: none;
+}
+
+/* 모바일 */
+@media (max-width:768px) {
+    .title_txt {
+        font-size: 14px;
+    }
+
+    .comment_form input::placeholder,
+    .comment_form textarea::placeholder {
+        font-size: 12px;
+    }
+
+    .form_top {
+        flex-direction: column;
+    }
+
+    .form_top input {
+        width: 100%;
+    }
+
+    .form_bot .txt_wrap {
+        display: flex;
+    }
+
+    .comment_form textarea {
+        margin-top: 8px;
+    }
+
+    .comment_wrap.isCommentEdit {
+        margin-block: 0;
+        padding-bottom: 40px;
+    }
+
+    .star_Img.isCommentEdit {
+        margin-block: 0 1.5rem;
+    }
+
+    .dateSearch_wrapper :global(.ant-picker-dropdown) {
+        max-width: 100vw;
+    }
+
+
+}

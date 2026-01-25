@@ -1,0 +1,48 @@
+.recent_wrapper {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    border: 1px solid #C7C7C7;
+    border-radius: 8px;
+    padding: 12px;
+    background-color: white;
+    z-index: 1;
+}
+
+
+.recent_txt {
+    font-size: 14px;
+    font-size: 500;
+    margin-bottom: 8px;
+}
+
+.recent_product {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.recent_img {
+    width: 72px;
+    height: 72px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.recent_img .objectFit_img {
+    object-fit: cover;
+}
+
+.recent_img:hover {
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* 모바일 */
+@media (max-width:768px) {
+    .recent_wrapper {
+        display: none;
+    }
+
+}

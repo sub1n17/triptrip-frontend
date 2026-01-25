@@ -1,0 +1,135 @@
+.list_wrapper {
+    padding: 24px 48px;
+    min-width: 680px;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.flex_wrap {
+    display: flex;
+    gap: 8px;
+    text-align: center;
+}
+
+.list_title {
+    padding: 1rem 1.5rem;
+    font-weight: 500;
+    color: #1C1C1C;
+}
+
+.board_list {
+    border: 1px solid #F2F2F2;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    margin-bottom: 12px;
+    position: relative;
+    width: 100%;
+}
+
+.board_number {
+    max-width: 64px;
+    width: 20%;
+}
+
+.board_title {
+    max-width: 848px;
+    flex: 1;
+    text-align: left;
+}
+
+.board_sold {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #2974E5;
+    margin-left: 8px;
+}
+
+.board_writer {
+    max-width: 100px;
+    width: 100%;
+}
+
+.board_date {
+    max-width: 100px;
+    width: 100%;
+}
+
+.board_wrap .board_number {
+    color: #919191;
+    font-weight: 300;
+}
+
+.board_wrap .board_title {
+    font-weight: 500;
+}
+
+.board_wrap .board_writer {
+    font-weight: 300;
+    color: #333333;
+}
+
+.board_wrap .board_date {
+    font-weight: 300;
+    color: #919191;
+}
+
+/* .delete {
+    position: absolute;
+    top: 10px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+.board_list:hover .delete {
+    opacity: 1;
+    visibility: visible;
+} */
+
+.empty {
+    text-align: center;
+    color: #999;
+}
+
+/* 모바일 */
+@media (max-width:768px) {
+    .list_wrapper {
+        min-width: auto;
+        padding: 16px;
+    }
+
+    .board_number {
+        width: 20%;
+    }
+
+    .board_writer,
+    .board_date {
+        width: 24%;
+    }
+
+    .board_list {
+        padding: 8px;
+    }
+
+    .list_title {
+        padding: 4px 8px;
+    }
+
+    .board_sold {
+        margin-left: 0;
+        display: block;
+    }
+
+    .board_title {
+        max-width: none;
+        width: 100%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        margin-right: 8px;
+    }
+}

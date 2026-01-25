@@ -1,0 +1,70 @@
+.bottomNav {
+    display: none;
+    /* padding-bottom: 20px; */
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    /* ㄴ> 홈 인디케이터 보호용 여백 */
+    width: 100%;
+    background-color: #FFFFFF;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    border-top: 1px solid #F2F2F2;
+}
+
+.nav_inner {
+    display: flex;
+    padding: 8px 20px;
+}
+
+.menu {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.nav_img {
+    width: 24px;
+    height: 24px;
+    position: relative;
+}
+
+.nav_img img {
+    filter: grayscale(1) brightness(1.15);
+    opacity: 0.35;
+    object-fit: contain;
+}
+
+.menu.active .nav_img img {
+    filter: none;
+    opacity: 1;
+}
+
+/* 최근본상품 메뉴 눌렀을 때 누르는 순간에 살짝 반응보여주기 */
+.recent_menu.active {
+    opacity: 0.6;
+    transform: scale(0.95);
+    transition: all 0.1s;
+}
+
+.nav_txt {
+    font-size: 11px;
+    color: #777777;
+
+}
+
+.menu.active .nav_txt {
+    color: #000000;
+    font-weight: 500;
+}
+
+/* 모바일 */
+@media (max-width:768px) {
+    .bottomNav {
+        display: block;
+
+    }
+}

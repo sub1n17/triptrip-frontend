@@ -1,0 +1,10 @@
+.input_wrapperInput {
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #D4D3D3;
+    width: 100%;
+}
+
+.input_wrapperInput::placeholder {
+    color: #ABABAB;
+}

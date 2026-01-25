@@ -1,0 +1,10 @@
+.mobileRecent {
+    display: none;
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+    .mobileRecent {
+        display: block;
+    }
+}

@@ -1,0 +1,57 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    align-items: center;
+    gap: 8px;
+    margin: 0 auto;
+    width: fit-content;
+    margin-top: 8px;
+}
+
+.page_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.page_active {
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #F2F2F2;
+}
+
+.page {
+    color: #777;
+    position: relative;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+.active_page {
+    color: #000;
+    font-weight: 500;
+}
+
+.active_page::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    background-color: #F2F2F2;
+    border-radius: 8px;
+    z-index: -1;
+    aspect-ratio: 1/1;
+}
+
+
+
+/* 모바일 */
+@media (max-width:768px) {
+    .page {
+        font-size: 14px;
+    }
+}

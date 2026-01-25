@@ -1,0 +1,42 @@
+.board_wrapper {
+    padding: 24px 48px;
+    min-width: 680px;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.boardTitle {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 36px;
+}
+
+.container {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    margin-block: 40px;
+}
+
+/* 태블릿 */
+@media (max-width:1024px) {
+    .container {
+        padding-inline: 20px;
+    }
+}
+
+/* 모바일 */
+@media (max-width:768px) {
+    .boardTitle {
+        font-size: 1rem;
+    }
+
+    .board_wrapper {
+        min-width: initial;
+        padding: 1rem;
+    }
+
+    /* .container {
+        padding-bottom: 40px;
+    } */
+}

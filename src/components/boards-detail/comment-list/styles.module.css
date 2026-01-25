@@ -1,0 +1,44 @@
+.comment_list {
+
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid #E4E4E4;
+
+}
+
+.list_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top_left {
+    display: flex;
+    align-items: center;
+}
+
+.comment_writer {
+    margin-inline: 4px 8px;
+    color: #5F5F5F;
+    font-weight: 300;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+}
+
+.top_right {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.list_content {
+    margin-block: 8px;
+    color: #333333;
+    font-weight: 400;
+}
+
+.list_date {
+    color: #818181;
+    font-weight: 400;
+    font-size: 0.875rem;
+}

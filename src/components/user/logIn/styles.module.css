@@ -1,0 +1,80 @@
+.logIn_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding-inline: 40px;
+}
+
+.welcome_txt {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-block: 24px 16px;
+}
+
+.login_txt {
+    font-size: 14px;
+    font-weight: 5600;
+    color: #333333;
+    margin-bottom: 16px;
+}
+
+.input_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.input_wrapper input {
+    border-radius: 8px;
+    border: 1px solid #D4D3D3;
+    padding: 8px 16px;
+}
+
+.input_wrapper input::placeholder {
+    font-size: 14px;
+    color: #ABABAB;
+}
+
+.input_wrapper input:focus {
+    outline: none;
+}
+
+.login_btn {
+    background-color: #2974E5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    height: 48px;
+    width: 100%;
+    color: #FFFFFF;
+    margin-block: 24px;
+}
+
+.signUp_btn {
+    font-size: 14px;
+    color: #333;
+}
+
+.error_txt {
+    font-size: 12px;
+    color: #F66A6A;
+    align-self: start;
+    margin-top: 8px;
+}
+
+/* 모바일 */
+@media (max-width:768px) {
+
+
+    .logIn_wrapper {
+        padding-inline: 20px;
+    }
+
+    .login_btn {
+        margin-block: 24px 16px;
+    }
+}

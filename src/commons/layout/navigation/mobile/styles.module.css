@@ -1,0 +1,160 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 20px;
+    background-color: #FFFFFF;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 48px;
+    z-index: 2;
+    transition: all 0.3s;
+}
+
+.backBtn,
+.close {
+    position: relative;
+    width: 24px;
+    height: 24px;
+}
+
+.menu_name {
+    font-weight: 600;
+}
+
+.menu_name.center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav.center {
+    justify-content: end;
+}
+
+.login_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #333333;
+}
+
+.logoutImg {
+    width: 16px;
+    height: 16px;
+    position: relative;
+}
+
+.logoImg {
+    width: 36px;
+    height: 36px;
+    position: relative;
+}
+
+.menuClose {
+    width: 24px;
+    height: 24px;
+    position: relative;
+}
+
+.menu_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3rem;
+}
+
+.aside_menu {
+    width: 16.25rem;
+    height: 100dvh;
+    background-color: #FFFFFF;
+    padding-inline: 20px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transform: translate(100%);
+    z-index: 2;
+    transition: all 0.3s;
+}
+
+.aside_menu.open {
+    transform: translateX(0);
+}
+
+/* 오버레이 */
+.overlay {
+    position: fixed;
+    inset: 0;
+    height: 100dvh;
+    background-color: #00000080;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+    z-index: 2;
+}
+
+.overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.profileImg {
+    width: 24px;
+    height: 24px;
+    position: relative;
+}
+
+.pointImg {
+    width: 20px;
+    height: 20px;
+    position: relative;
+}
+
+.chargeImg,
+.logoutImg {
+    width: 16px;
+    height: 16px;
+    position: relative;
+}
+
+.profileImg_wrapper {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    padding-block: 1rem;
+}
+
+.clickPoint {
+    padding-block: 12px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+
+}
+
+.profileClickFlex {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.clickMenuBtn {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.btnCharge,
+.btnLogout {
+    padding-block: 8px;
+}
+
+@media (max-width:768px) {
+    .nav {
+        width: 100%;
+    }
+}
