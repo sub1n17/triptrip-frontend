@@ -1,14 +1,15 @@
 'use client';
 
-import React from 'react';
+import React, { ComponentType } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useTokenStore } from '../../stores/token';
 import { useEffect } from 'react';
 import { useLoadStore } from '../../stores/load';
 import { message } from 'antd';
 
-export const withLoginCheck = (WrappedComponent: any) => {
-    const WithLoginCheck = (props: any) => {
+// props 타입이 P인 컴포넌트를 받는데, 그 props(P)는 반드시 객체
+export const withLoginCheck = <P extends object>(WrappedComponent: ComponentType<P>) => {
+    const WithLoginCheck = (props: P) => {
         const { accessToken } = useTokenStore();
         const { isLoaded } = useLoadStore();
         const router = useRouter();
