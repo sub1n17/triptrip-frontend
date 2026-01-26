@@ -229,7 +229,7 @@ export default function TravelProductDetail() {
                             data?.fetchTravelproduct.seller?._id ===
                                 userData?.fetchUserLoggedIn?._id && (
                                 <button className={style.btn_icon}>
-                                    <Dropdown menu={{ items }} trigger={['hover', 'click']}>
+                                    <Dropdown menu={{ items }} trigger={['click']}>
                                         <a onClick={(e) => e.preventDefault()}>
                                             <Space>
                                                 {/* 더보기 */}

@@ -34,6 +34,8 @@
     padding-block: 20px 0;
     transform: translateY(100%);
     transition: all 0.3s;
+    padding-top: env(safe-area-inset-top);
+    /* ㄴ> 상태바 / 노치 영역에 패딩 넣에서 상단에 닿지 않게 하기 → 노치 없는 기기는 0px */
 }
 
 .mobRecent_container.show {
