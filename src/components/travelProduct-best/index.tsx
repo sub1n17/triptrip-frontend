@@ -9,19 +9,28 @@ import style from './styles.module.css';
 import { useQuery } from '@apollo/client';
 import Link from 'next/link';
 import DOMPurify from 'dompurify';
-import { FetchTravelproductsOfTheBestDocument } from '@/commons/graphql/graphql';
+import {
+    FetchTravelproductsDocument,
+    FetchTravelproductsOfTheBestDocument,
+} from '@/commons/graphql/graphql';
 
 export default function TravelProductBest() {
-    const { data } = useQuery(FetchTravelproductsOfTheBestDocument);
+    const { data: bestData } = useQuery(FetchTravelproductsOfTheBestDocument);
+    const { data: allData } = useQuery(FetchTravelproductsDocument);
 
-    const allProducts = data?.fetchTravelproductsOfTheBest ?? [];
-    const saleProducts = allProducts.filter((el) => !el.soldAt);
+    const bestList = bestData?.fetchTravelproductsOfTheBest ?? [];
+    const allList = allData?.fetchTravelproducts ?? [];
 
-    // 판매완료 안 된 상품만 보여주기
-    const bestProducts =
-        saleProducts.length > 0
-            ? saleProducts.sort((a, b) => (b.pickedCount ?? 0) - (a.pickedCount ?? 0)).slice(0, 4)
-            : allProducts.sort((a, b) => (b.pickedCount ?? 0) - (a.pickedCount ?? 0)).slice(0, 4);
+    // 1. 판매완료 제거
+    const filteredBest = bestList.filter((el) => !el.soldAt);
+
+    // 2. 이미 베스트에 있는 id 제외 + 판매중인 숙박권 중 북마크 높은 순으로 뽑아내기
+    const remainingCandidates = allList
+        .filter((el) => !el.soldAt && !filteredBest.some((best) => best._id === el._id))
+        .sort((a, b) => (b.pickedCount ?? 0) - (a.pickedCount ?? 0));
+
+    // 3. 부족한 개수만큼 채우기
+    const bestProducts = [...filteredBest, ...remainingCandidates].slice(0, 4);
 
     return (
         <>
