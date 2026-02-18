@@ -277,13 +277,10 @@ export default function TravelProductWrite<T extends FetchTravelproductQuery>({
                             <button
                                 className={style.cancel}
                                 type="button"
-                                onClick={
-                                    () =>
-                                        isEdit
-                                            ? router.replace(`/travelProduct/${productId}`)
-                                            : router.replace(`/travelProduct`)
-
-                                    // () => router.push(`/travelProduct/${productId}`)
+                                onClick={() =>
+                                    isEdit
+                                        ? router.replace(`/travelProduct/${productId}`)
+                                        : router.replace(`/travelProduct`)
                                 }
                             >
                                 취소

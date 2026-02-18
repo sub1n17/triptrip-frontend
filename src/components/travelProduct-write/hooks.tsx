@@ -136,9 +136,9 @@ export default function UseTravelProductWrite<T extends FetchTravelproductQuery>
     const [postAddress, setPostAddress] = useState('');
     const handleComplete = (data: IAddressData) => {
         setIsModalOpen(false);
-        console.log(data.zonecode);
-        console.log(data.address);
-        methods.setValue('travelproductAddress.zipcode', data.zonecode); // 강제로 'a'필드에 b값을 넣게함
+        // methods.setValue('travelproductAddress.zipcode', data.zonecode); // 강제로 'a'필드에 b값을 넣게함
+        methods.setValue('travelproductAddress.zipcode', data.zonecode, { shouldValidate: true });
+
         setPostAddress(data.address);
 
         // 카카오맵 API가 로드된 후 실행
@@ -154,14 +154,12 @@ export default function UseTravelProductWrite<T extends FetchTravelproductQuery>
 
         geocoder.addressSearch(data.address, function (result: any, status: any) {
             if (status === window.kakao.maps.services.Status.OK) {
-                console.log('카카오맵 : ', result);
-
                 const lat = parseFloat(result[0].y);
                 const lng = parseFloat(result[0].x);
 
                 // 위도, 경도 form에 저장
-                methods.setValue('travelproductAddress.lat', lat);
-                methods.setValue('travelproductAddress.lng', lng);
+                methods.setValue('travelproductAddress.lat', lat, { shouldValidate: true });
+                methods.setValue('travelproductAddress.lng', lng, { shouldValidate: true });
 
                 // 위도, 경도로 지도 나타내기
                 const mapContainer = document.getElementById('map'), // 지도를 표시할 div
@@ -231,9 +229,6 @@ export default function UseTravelProductWrite<T extends FetchTravelproductQuery>
         methods.trigger('contents');
     };
 
-    // handleSubmitModalOk 클릭 시 라우팅 될 게시글 id값 변수 만들기
-    // const [routingID, setRoutingId] = useState('');
-
     const params = useParams();
 
     const onClickSubmit = async (data: FormData) => {
@@ -261,42 +256,19 @@ export default function UseTravelProductWrite<T extends FetchTravelproductQuery>
                             images: imgUrl,
                         },
                     },
-                    // refetchQueries: [
-                    //     {
-                    //         query: FetchTravelproductsDocument,
-                    //         variables: { page: 1, search: search || null, isSoldout: false },
-                    //     },
-                    // ],
                 });
 
                 // 주소 state 초기화
                 setPostAddress('');
 
-                // 등록 완료 모달창 열기
-                // setIsSubmitModalOpen(true);
-
-                // const productId = result.data.createTravelproduct._id;
-                // setRoutingId(productId);
-
-                // 오픈그래프 적용
-                const scrapingFetch = await fetch(
-                    `http://localhost:3000/travelProduct/${result.data.createTravelproduct._id}`,
-                );
-                const scrapingTxt = await scrapingFetch.text();
-                const resultOg = scrapingTxt
-                    .split('<meta')
-                    .filter((el) => el.includes('property="og:'));
-                console.log('resultOg', resultOg);
-
                 router.replace(`/travelProduct/${result.data.createTravelproduct._id}?create=true`);
             } catch (error) {
-                alert((error as Error).message);
+                console.log((error as Error).message);
             }
         } else {
             // //////////////////////////// 수정하기 ////////////////////////////
-
             try {
-                const result = await update_travel_product({
+                await update_travel_product({
                     variables: {
                         travelproductId: params.productId,
                         updateTravelproductInput: {
@@ -319,32 +291,16 @@ export default function UseTravelProductWrite<T extends FetchTravelproductQuery>
                         },
                     },
                 });
-                console.log(result);
 
                 // 주소 state 초기화
                 setPostAddress('');
 
                 router.replace(`/travelProduct/${params.productId}?edit=true`);
-
-                // 수정 완료 모달창 열기
-                // setIsSubmitModalOpen(true);
-                // setRoutingId(String(params.productId));
             } catch (error) {
-                alert((error as Error).message);
+                console.log((error as Error).message);
             }
         }
     };
-
-    // // 등록 모달창 ok
-    // const handleSubmitModalOk = () => {
-    //     setIsSubmitModalOpen(false);
-    //     // 상세페이지로 이동
-    //     router.push(`/travelProduct/${routingID}`);
-    // };
-    // // 등록 모달창 cancel
-    // const handleSubmitModalCancel = () => {
-    //     setIsSubmitModalOpen(false);
-    // };
 
     return {
         methods,
@@ -360,8 +316,5 @@ export default function UseTravelProductWrite<T extends FetchTravelproductQuery>
         onChangeUrl,
         onClickFile,
         onClickDelete,
-        // isSubmitModalOpen,
-        // handleSubmitModalOk,
-        // handleSubmitModalCancel,
     };
 }
