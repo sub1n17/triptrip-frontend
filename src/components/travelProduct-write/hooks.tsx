@@ -244,7 +244,7 @@ export default function UseTravelProductWrite<T extends FetchTravelproductQuery>
                             price: Number(data.price),
                             tags: data.tags
                                 ?.split(/[,\s]+/) // 쉼표나 공백 문자가 1개 이상 있는 부분을 찾아줘 -> "가나다, abc def,   xyz" => ["가나다", "abc", "def", "xyz"]
-                                .map((el) => el.trim()) // 남아 있을 수도 있는 불필요한 앞뒤 공백 제거
+                                .map((el) => el.replace(/^#+/, '').trim()) //  # 있으면 제거 후 남아 있을 수도 있는 불필요한 앞뒤 공백 제거
                                 .filter((el) => el !== ''), // 실수로 쉼표만 입력해서 생긴 빈 값을 제외할 수 있음
                             travelproductAddress: {
                                 zipcode: data.travelproductAddress?.zipcode,
@@ -278,7 +278,7 @@ export default function UseTravelProductWrite<T extends FetchTravelproductQuery>
                             price: data.price,
                             tags: data.tags
                                 ?.split(/[,\s]+/)
-                                .map((el) => el.trim())
+                                .map((el) => el.replace(/^#+/, '').trim())
                                 .filter((el) => el !== ''),
                             travelproductAddress: {
                                 zipcode: data.travelproductAddress?.zipcode,
