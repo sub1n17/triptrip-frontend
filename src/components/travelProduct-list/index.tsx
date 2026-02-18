@@ -55,6 +55,7 @@ export default function TravelProductList() {
 
     const {
         data,
+        refetch: refetchOnSale,
         fetchMore: fetchMoreOnSale,
         loading: loadingOnSale, // 검색어 입력 시 새테이터 가져오면서 일시적으로 undefined돼서 깜빡이는 현상 방지
     } = useQuery(FetchTravelproductsDocument, {
@@ -67,6 +68,7 @@ export default function TravelProductList() {
 
     const {
         data: soldOutData,
+        refetch: refetchSoldOut,
         fetchMore: fetchMoreSoldOut,
         loading: loadingSoldOut,
     } = useQuery(FetchTravelproductsDocument, {
@@ -76,6 +78,11 @@ export default function TravelProductList() {
         },
         fetchPolicy: 'cache-first',
     });
+
+    useEffect(() => {
+        refetchOnSale();
+        refetchSoldOut();
+    }, []);
 
     const router = useRouter();
 
