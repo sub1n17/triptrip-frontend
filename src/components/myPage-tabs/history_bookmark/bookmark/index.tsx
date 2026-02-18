@@ -1,9 +1,25 @@
 'use client';
 
-import { useQuery } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 import style from './styles.module.css';
 import { useRouter } from 'next/navigation';
 import { FetchTravelproductsIPickedDocument } from '@/commons/graphql/graphql';
+
+export const FETCH_TRAVEL_PRODUCTS_I_PICKED = gql`
+    query FetchTravelproductsIPicked($page: Int, $search: String) {
+        fetchTravelproductsIPicked(page: $page, search: $search) {
+            _id
+            name
+            price
+            images
+            soldAt
+            createdAt
+            seller {
+                name
+            }
+        }
+    }
+`;
 
 export default function Bookmark() {
     const { data } = useQuery(FetchTravelproductsIPickedDocument, {

@@ -1,9 +1,23 @@
 'use client';
 
-import { useQuery } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 import PointListItem from '../common/listItem/listItem';
 import style from './styles.module.css';
 import { FetchPointTransactionsOfBuyingDocument } from '@/commons/graphql/graphql';
+
+export const FETCH_POINT_TRANSACTIONS_OF_BUYING = gql`
+    query FetchPointTransactionsOfBuying($search: String, $page: Int) {
+        fetchPointTransactionsOfBuying(search: $search, page: $page) {
+            _id
+            createdAt
+            amount
+            balance
+            travelproduct {
+                name
+            }
+        }
+    }
+`;
 
 export default function Buy() {
     const { data, loading } = useQuery(FetchPointTransactionsOfBuyingDocument, {
@@ -20,7 +34,7 @@ export default function Buy() {
                     <div className={style.list_balance}>거래 후 잔액</div>
                 </div>
                 <div className={style.board_wrap}>
-                    {data?.fetchPointTransactionsOfBuying?.length === 0 ? (
+                    {data?.fetchPointTransactionsOfBuying.length === 0 ? (
                         <div style={{ color: '#999', textAlign: 'center' }}>
                             포인트 구매내역이 없습니다.
                         </div>
