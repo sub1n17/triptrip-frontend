@@ -41,28 +41,26 @@ interface ITravelProductDetailLayoutProps {
     params: { productId: string };
 }
 
-export default async function TravelProductDetailLayout({
-    children,
-    params,
-}: ITravelProductDetailLayoutProps) {
+export async function generateMetadata({ params }: { params: { productId: string } }) {
     const graphQLClient = new GraphQLClient('https://main-practice.codebootcamp.co.kr/graphql');
     const data = await graphQLClient.request(FETCH_TRAVEL_PRODUCT, {
         travelproductId: params.productId,
     });
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://triptrip-frontend.vercel.app';
 
-    return (
-        <>
-            <meta property="og:title" content={data?.fetchTravelproduct?.name} />
-            <meta property="og:description" content={data?.fetchTravelproduct?.remarks} />
-            <meta
-                property="og:image"
-                content={
-                    data?.fetchTravelproduct?.images?.[0]
-                        ? `https://storage.googleapis.com/${data.fetchTravelproduct.images[0]}`
-                        : '/images/productThumbnail.jpg'
-                }
-            />
-            <>{children}</>
-        </>
-    );
+    return {
+        openGraph: {
+            title: data?.fetchTravelproduct?.name,
+            description: data?.fetchTravelproduct?.remarks,
+            images: [
+                data?.fetchTravelproduct?.images?.[0]
+                    ? `https://storage.googleapis.com/${data.fetchTravelproduct.images[0]}`
+                    : `${baseUrl}/images/productThumbnail.jpg`,
+            ],
+        },
+    };
+}
+
+export default function TravelProductDetailLayout({ children }: ITravelProductDetailLayoutProps) {
+    return <>{children}</>;
 }
