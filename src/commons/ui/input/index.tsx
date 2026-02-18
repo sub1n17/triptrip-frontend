@@ -14,15 +14,16 @@ interface IInputSoftProps<T> {
 }
 function InputBase<T extends FieldValues>(props: IInputSoftProps<T>) {
     const { register } = useFormContext<T>();
+    const { keyname, className, placeholder, readOnly, role, type } = props;
 
     return (
         <input
-            role={props.role}
-            type={props.type}
-            {...register(props.keyname)}
-            placeholder={props.placeholder}
-            {...props}
-            name={props.keyname}
+            role={role}
+            type={type}
+            placeholder={placeholder}
+            readOnly={readOnly}
+            className={className}
+            {...register(keyname)}
         />
     );
 }
