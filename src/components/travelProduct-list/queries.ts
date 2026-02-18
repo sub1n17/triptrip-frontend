@@ -6,6 +6,7 @@ export const fetchTravleproducts = gql`
             _id
             name
             remarks
+            contents
             price
             pickedCount
             images
@@ -13,6 +14,7 @@ export const fetchTravleproducts = gql`
                 name
             }
             tags
+            soldAt
         }
     }
 `;
