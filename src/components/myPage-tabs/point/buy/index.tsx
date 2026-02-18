@@ -20,7 +20,7 @@ export default function Buy() {
                     <div className={style.list_balance}>거래 후 잔액</div>
                 </div>
                 <div className={style.board_wrap}>
-                    {data?.fetchPointTransactionsOfBuying.length === 0 ? (
+                    {data?.fetchPointTransactionsOfBuying?.length === 0 ? (
                         <div style={{ color: '#999', textAlign: 'center' }}>
                             포인트 구매내역이 없습니다.
                         </div>
