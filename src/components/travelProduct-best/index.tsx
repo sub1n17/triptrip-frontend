@@ -11,27 +11,18 @@ import Link from 'next/link';
 import DOMPurify from 'dompurify';
 import { FetchTravelproductsOfTheBestDocument } from '@/commons/graphql/graphql';
 
-// const FETCH_PRODUCTS_BEST = gql`
-//     query fetchTravelproductsOfTheBest {
-//         fetchTravelproductsOfTheBest {
-//             _id
-//             name
-//             contents
-//             price
-//             pickedCount
-//             images
-//             soldAt
-//         }
-//     }
-// `;
-
 export default function TravelProductBest() {
     const { data } = useQuery(FetchTravelproductsOfTheBestDocument);
 
+    const allProducts = data?.fetchTravelproductsOfTheBest ?? [];
+    const saleProducts = allProducts.filter((el) => !el.soldAt);
+
     // 판매완료 안 된 상품만 보여주기
-    const isSaleProduct =
-        data?.fetchTravelproductsOfTheBest.filter((el) => !el.soldAt) ??
-        data?.fetchTravelproductsOfTheBest;
+    const bestProducts =
+        saleProducts.length > 0
+            ? saleProducts.sort((a, b) => (b.pickedCount ?? 0) - (a.pickedCount ?? 0)).slice(0, 4)
+            : allProducts.sort((a, b) => (b.pickedCount ?? 0) - (a.pickedCount ?? 0)).slice(0, 4);
+
     return (
         <>
             <div className={style.bold_txt}>2026년을 낭만있게 시작하고 싶다면?</div>
@@ -67,7 +58,7 @@ export default function TravelProductBest() {
                         },
                     }}
                 >
-                    {isSaleProduct?.map((el) => {
+                    {bestProducts?.map((el) => {
                         const validImg = el.images?.filter((img) => img && img !== null) ?? [];
                         return (
                             <SwiperSlide key={el._id}>
@@ -89,7 +80,7 @@ export default function TravelProductBest() {
                                     <div className={style.pickedCount}>
                                         <div className={style.bookmark}>
                                             <Image
-                                                src={'/images/bookmark.png'}
+                                                src={'/icons/bookmark.svg'}
                                                 alt="북마크"
                                                 fill
                                                 sizes="24px"
