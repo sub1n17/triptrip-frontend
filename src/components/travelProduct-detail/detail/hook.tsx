@@ -17,6 +17,11 @@ import {
 import { useTokenStore } from '@/commons/stores/token';
 
 export default function UseTravelProductDetail() {
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
+    // const tabMenu = searchParams.get('tabMenu');
+    const search = searchParams.get('search') || null;
+
     const params = useParams();
     const productId = params.productId;
 
@@ -56,7 +61,14 @@ export default function UseTravelProductDetail() {
                     await delete_product({
                         variables: { travelproductId: params.productId },
                         refetchQueries: [
-                            { query: FetchTravelproductsDocument, variables: { page: 1 } },
+                            {
+                                query: FetchTravelproductsDocument,
+                                variables: { isSoldout: false, search: search },
+                            },
+                            {
+                                query: FetchTravelproductsDocument,
+                                variables: { isSoldout: true, search: search },
+                            },
                         ],
                     });
                     setTimeout(() => {
@@ -116,9 +128,6 @@ export default function UseTravelProductDetail() {
     const [isBuyModalOpen, setIsBuyModalOpen] = useState(false);
     const [modalType, setModalType] = useState<'yesOrNo' | 'noPoint'>('yesOrNo');
 
-    const pathname = usePathname();
-    const searchParams = useSearchParams();
-
     // 구매하기 버튼 클릭
     const onClickModalOpen = () => {
         if (!accessToken) {
@@ -134,7 +143,6 @@ export default function UseTravelProductDetail() {
         setModalType('yesOrNo');
     };
 
-    const search = searchParams.get('search') || null;
     // 모달 - 구매 클릭
     const onClickBuy = async () => {
         try {
