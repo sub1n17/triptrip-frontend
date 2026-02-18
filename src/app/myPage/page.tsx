@@ -12,8 +12,8 @@ import { withLoginCheck } from '@/commons/hocs/withLoginCheck';
 
 const imgSrc = {
     profile: '/images/myPage_profileImg.png',
-    profile2: '/images/profile.png',
-    point: '/images/myPage_point.png',
+    profile2: '/images/profile.svg',
+    point: '/icons/point.svg',
 };
 
 const FETCH_USER_LOGGED_IN = gql`
@@ -41,7 +41,13 @@ function MyPage() {
                 <div className={style.top_title}>내 정보</div>
                 <div className={style.profile_wrapper}>
                     <div className={style.profile_img}>
-                        <Image src={imgSrc.profile2} alt="프로필" fill sizes="40px"></Image>
+                        <Image
+                            src={imgSrc.profile2}
+                            alt="프로필"
+                            fill
+                            sizes="40px"
+                            priority
+                        ></Image>
                     </div>
                     <div className={style.profile_name}>{data?.fetchUserLoggedIn.name} </div>
                 </div>

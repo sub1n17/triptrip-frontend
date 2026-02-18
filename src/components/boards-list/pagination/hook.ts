@@ -13,11 +13,6 @@ export default function usePagination(props: IPaginationProps) {
     // 페이지 클릭할 때 페이지 변수 전달하기
     const onClickPage = (page: number) => {
         props.setActivePage(page);
-
-        // router.push(
-        //     `/boards?search=${search}&page=${event.currentTarget.id}` +
-        //         (dateStart && dateEnd ? `&dateStart=${dateStart}&dateEnd=${dateEnd}` : '')
-        // );
         props.setQueryString((prev) => ({
             ...prev,
             page: page,

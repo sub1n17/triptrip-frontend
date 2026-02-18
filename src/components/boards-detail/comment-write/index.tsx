@@ -14,8 +14,7 @@ import React from 'react';
 import { FetchBoardCommentsQuery } from '@/commons/graphql/graphql';
 
 const imgSrc = {
-    chatImg: '/images/chat.png',
-    fiveStarsImg: '/images/five_stars.png',
+    chatImg: '/icons/chat.svg',
 };
 interface ICommentWriteProps {
     isCommentEdit?: boolean;

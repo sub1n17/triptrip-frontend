@@ -9,8 +9,8 @@ import { usePathname } from 'next/navigation';
 import { Dayjs } from 'dayjs';
 
 const imgSrc = {
-    search: '/images/search.png',
-    newBtn: '/images/newBtn.png',
+    search: '/icons/search.svg',
+    newBtn: '/icons/new.svg',
 };
 
 export default function Search({
@@ -52,8 +52,6 @@ export default function Search({
                                 root: style.popup,
                             },
                         }}
-                        // ㄴ> 달력 팝업창에 class 붙이기
-                        // popupClassName={style.popup} // 최신버전에서 권장안되는 방식이라 오류 -> classNames.popup.root로 해결
                     />
                 )}
                 <div className={style.search_wrapper}>

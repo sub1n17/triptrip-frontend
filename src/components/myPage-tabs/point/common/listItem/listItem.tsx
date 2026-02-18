@@ -16,10 +16,7 @@ interface IPointListItemProps {
 export default function PointListItem(props: IPointListItemProps) {
     return (
         <>
-            <button
-                // onClick={(event) => onClickDetail(event, el._id)}
-                className={`${style.flex_wrap} ${style.board_list}`}
-            >
+            <button className={`${style.flex_wrap} ${style.board_list}`}>
                 {props.createdAt && (
                     <div className={style.list_date}>
                         {props.createdAt.slice(0, 10).split('-').join('.')}

@@ -13,10 +13,10 @@ import { FETCH_USER_LOGIN } from '../detail/queries';
 import { message, Modal } from 'antd';
 
 const imgSrc = {
-    profileImg: '/images/profile.png',
-    return: '/images/return.png',
-    pencil: '/images/pencil.png',
-    close: '/images/close.png',
+    profileImg: '/images/profile.svg',
+    return: '/icons/return.svg',
+    pencil: '/icons/pencil.svg',
+    close: '/icons/close.svg',
 };
 
 const DELETE_TRAVEL_PRODUCT_QUESTION_ANSWER = gql`

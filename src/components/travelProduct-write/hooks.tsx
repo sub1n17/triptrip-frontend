@@ -10,11 +10,6 @@ import { ITravelProductWrite } from './types';
 import { FetchTravelproductQuery } from '@/commons/graphql/graphql';
 import { FormData, schema } from '@/commons/schema/travelProduct.schema';
 
-// window에 kakao 추가
-// declare const window: Window & {
-//     kakao: any;
-// };
-
 export default function UseTravelProductWrite<T extends FetchTravelproductQuery>({
     isEdit,
     data,

@@ -130,8 +130,8 @@
 
 .lat_wrapper input,
 .lng_wrapper input {
-    background-color: #E4E4E4;
-    border: 1px solid #E4E4E4;
+    background-color: #f0f0f0;
+    border: 1px solid#f0f0f0;
 }
 
 .lat_wrapper input::placeholder,
@@ -146,7 +146,7 @@
 .address_location {
     width: 100%;
     border-radius: 8px;
-    background-color: #E4E4E4;
+    background-color: #f0f0f0;
     color: #777777;
     font-size: 14px;
     font-weight: 500;

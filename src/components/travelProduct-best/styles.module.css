@@ -73,9 +73,7 @@
 }
 
 .swiper_wrapper :global(.swiper-slide) {
-    /* width: 320px; */
-
-    height: 420px;
+    height: auto;
     flex-shrink: 0;
 }
 
@@ -85,6 +83,7 @@
     overflow: hidden;
     width: 100%;
     height: 100%;
+    aspect-ratio: 1/1;
     position: relative;
 }
 
@@ -161,14 +160,8 @@
 
 /* 태블릿 */
 @media (max-width:1024px) {
-    .swiper_wrapper :global(.swiper-slide) {
-        aspect-ratio: 1/1;
-        height: auto;
-    }
-
     .swiper_slide {
         border-radius: 16px;
-
     }
 }
 

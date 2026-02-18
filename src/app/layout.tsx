@@ -5,20 +5,17 @@ import ApolloSetting from '@/commons/settings/apollo-setting';
 import BoardLayout from '@/commons/layout';
 import React from 'react';
 
-const geistSans = localFont({
-    src: './fonts/GeistVF.woff',
-    variable: '--font-geist-sans',
+const pretendard = localFont({
+    src: './fonts/PretendardVariable.woff2',
+    variable: '--font-pretendard',
     weight: '100 900',
-});
-const geistMono = localFont({
-    src: './fonts/GeistMonoVF.woff',
-    variable: '--font-geist-mono',
-    weight: '100 900',
+    display: 'swap',
 });
 
 export const metadata: Metadata = {
     title: 'trip trip',
     description: 'trip trip',
+    viewport: 'width=device-width, initial-scale=1.0',
 
     // Next.js에서 전역 오픈그래프(OG)를 설정
     openGraph: {
@@ -34,8 +31,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en">
-            <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <html lang="ko">
+            <body className={`${pretendard.variable} antialiased`}>
                 <ApolloSetting>
                     <BoardLayout>{children}</BoardLayout>
                 </ApolloSetting>

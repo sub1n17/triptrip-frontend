@@ -5,10 +5,10 @@ import style from './styles.module.css';
 import { usePathname, useRouter } from 'next/navigation';
 
 const imgSrc = {
-    trip: '/images/mob_trip.png',
-    travel: '/images/mob_travel.png',
-    mypage: '/images/mob_mypage.png',
-    recent: '/images/mob_recent.png',
+    trip: '/icons/mob_trip.svg',
+    travel: '/icons/mob_store.svg',
+    mypage: '/icons/mob_mypage.svg',
+    recent: '/icons/mob_recent.svg',
 };
 
 interface IRecentMobileProps {

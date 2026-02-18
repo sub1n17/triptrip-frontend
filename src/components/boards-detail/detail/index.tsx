@@ -14,15 +14,11 @@ import SentimentDissatisfiedOutlinedIcon from '@mui/icons-material/SentimentDiss
 import YouTube from 'react-youtube';
 
 const imgSrc = {
-    profileImg: '/images/profile.png',
-    linkImg: '/images/link.png',
-    locationImg: '/images/location.png',
-    beachImg: '/images/beach.png',
-    videoImg: '/images/video.png',
-    badImg: '/images/bad.png',
-    goodImg: '/images/good.png',
-    listImg: '/images/list.png',
-    pencilImg: '/images/pencil.png',
+    profileImg: '/images/profile.svg',
+    linkImg: '/icons/link.svg',
+    locationSvg: '/images/location.svg',
+    listImg: '/icons/list.svg',
+    pencilImg: '/icons/edit.svg',
 };
 
 export default function BoardDetail({ isCommentEdit }: { isCommentEdit?: boolean }) {
@@ -60,7 +56,7 @@ export default function BoardDetail({ isCommentEdit }: { isCommentEdit?: boolean
                             <div className={style.locationImg}>
                                 <Tooltip title={data?.fetchBoard?.boardAddress?.address}>
                                     <Image
-                                        src={imgSrc.locationImg}
+                                        src={imgSrc.locationSvg}
                                         fill
                                         alt="로케이션이미지"
                                         style={{ objectFit: 'contain' }}

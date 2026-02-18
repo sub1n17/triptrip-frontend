@@ -5,18 +5,6 @@ import PointListItem from '../common/listItem/listItem';
 import style from './styles.module.css';
 import { FetchPointTransactionsOfSellingDocument } from '@/commons/graphql/graphql';
 
-// const FETCH_POINT_SELLING = gql`
-//     query fetchPointTransactionsOfSelling($search: String, $page: Int) {
-//         fetchPointTransactionsOfSelling(search: $search, page: $page) {
-//             createdAt
-//             travelproduct {
-//                 name
-//             }
-//             amount
-//             balance
-//         }
-//     }
-// `;
 export default function Sell() {
     const { data } = useQuery(FetchPointTransactionsOfSellingDocument, {
         variables: { search: '', page: 1 },

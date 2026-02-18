@@ -10,17 +10,13 @@ import 'react-quill/dist/quill.snow.css';
 
 import UseTravelProductDetail from './hook';
 import { message, Modal, Popover, Tooltip } from 'antd';
-// import { useState } from 'react';
 import { usePointModalStore } from '@/commons/stores/pointModal';
 import { useEffect } from 'react';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { useTokenStore } from '@/commons/stores/token';
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-// // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
-// import required modules
 import { Pagination } from 'swiper/modules';
 import type { MenuProps } from 'antd';
 import { Dropdown, Space } from 'antd';
@@ -31,17 +27,18 @@ import { IRecentProduct } from './queries';
 
 const imgSrc = {
     productDelete: '/images/product_delete.png',
-    link: '/images/link.png',
-    location: '/images/location.png',
-    bookmark: '/images/bookmark.png',
+    link: '/icons/link.svg',
+    location: '/images/location.svg',
+    bookmark: '/icons/bookmark.svg',
     productMain: '/images/product_big.png',
     product01: '/images/product_small01.png',
     product02: '/images/product_small02.png',
     product03: '/images/product_small03.png',
-    productProfile: '/images/product_profile.png',
-    edit: '/images/pencil.png',
-    listImg: '/images/list.png',
-    pencilImg: '/images/pencil.png',
+    // productProfile: '/images/product_profile.svg',
+    productProfile: '/images/profile.svg',
+    edit: '/icons/pencil.svg',
+    listImg: '/icons/list.svg',
+    pencilImg: '/icons/pencil.svg',
     productThumbnail: '/images/productThumbnail.jpg',
 };
 
@@ -142,36 +139,6 @@ export default function TravelProductDetail() {
                     <div className={style.title}>{data?.fetchTravelproduct.name} </div>
 
                     <div className={style.btn_wrapper}>
-                        {/* {accessToken &&
-                            data?.fetchTravelproduct.seller._id ===
-                                userData?.fetchUserLoggedIn?._id && (
-                                <button onClick={onClickEdit}>
-                                    <div className={style.btn_icon}>
-                                        <Image
-                                            src={imgSrc.edit}
-                                            alt="수정"
-                                            fill
-                                            sizes="24px"
-                                            className={style.btn_icon_img}
-                                        ></Image>
-                                    </div>
-                                </button>
-                            )}
-                        {accessToken &&
-                            data?.fetchTravelproduct.seller._id ===
-                                userData?.fetchUserLoggedIn?._id && (
-                                <button onClick={onClickDelete}>
-                                    <div className={style.btn_icon}>
-                                        <Image
-                                            src={imgSrc.productDelete}
-                                            alt="삭제"
-                                            fill
-                                            sizes="24px"
-                                            className={`${style.btn_icon_img} ${style.delete_img}`}
-                                        ></Image>
-                                    </div>
-                                </button>
-                            )} */}
                         <button onClick={onClickCopy}>
                             <div className={style.btn_icon}>
                                 <Image
@@ -256,28 +223,22 @@ export default function TravelProductDetail() {
             <div className={style.product_center}>
                 <div className={style.img_wrapper}>
                     <div className={style.productMain_img}>
-                        {
-                            <Image
-                                src={
-                                    validImg && validImg.length > 0 && activeImg
-                                        ? validImg[0].startsWith('http')
-                                            ? validImg[0]
-                                            : `https://storage.googleapis.com/${activeImg}`
-                                        : imgSrc.productThumbnail
-                                    // validImg && validImg.length > 0 && activeImg
-                                    //     ? `https://storage.googleapis.com/${activeImg}`
-                                    //     : imgSrc.productThumbnail
-                                }
-                                alt="상품 이미지"
-                                fill
-                                style={{
-                                    objectFit: 'cover',
-                                    // objectPosition: '50% 20%',
-                                }}
-                                sizes="50vw"
-                                priority
-                            />
-                        }
+                        <Image
+                            src={
+                                validImg && validImg.length > 0 && activeImg
+                                    ? validImg[0].startsWith('http')
+                                        ? validImg[0]
+                                        : `https://storage.googleapis.com/${activeImg}`
+                                    : imgSrc.productThumbnail
+                            }
+                            alt="상품 이미지"
+                            fill
+                            style={{
+                                objectFit: 'cover',
+                            }}
+                            sizes="(max-width: 768px) 100vw, 685px"
+                            priority
+                        />
                     </div>
 
                     {validImg && validImg.length > 0 && (
@@ -285,7 +246,6 @@ export default function TravelProductDetail() {
                             {validImg.map((el: string, index: number) => {
                                 return (
                                     <div
-                                        // className={style.productSmall_img}
                                         className={`${style.productSmall_img} ${
                                             validImg.length === 3 ? style.fill : style.auto
                                         }`}
@@ -297,10 +257,9 @@ export default function TravelProductDetail() {
                                                     ? el
                                                     : `https://storage.googleapis.com/${el}`
                                             }
-                                            // src={`https://storage.googleapis.com/${el}`}
                                             alt="숙소"
                                             fill
-                                            sizes="50vw"
+                                            sizes="140px"
                                             style={{ objectFit: 'cover' }}
                                             onClick={() => setActiveImg(el)}
                                             priority
@@ -350,7 +309,7 @@ export default function TravelProductDetail() {
                         <div className={style.profile_wrapper}>
                             <div className={style.profile_img}>
                                 <Image
-                                    src={'/images/profile.png'}
+                                    src={'/images/profile.svg'}
                                     alt="판매자"
                                     fill
                                     sizes="40px"
@@ -387,7 +346,7 @@ export default function TravelProductDetail() {
                                         alt="상품 이미지"
                                         fill
                                         style={{ objectFit: 'cover' }}
-                                        sizes="100vw"
+                                        sizes="(max-width: 768px) 100vw, 0px"
                                         priority
                                     />
                                 </div>
@@ -399,9 +358,11 @@ export default function TravelProductDetail() {
                         <Image
                             src={imgSrc.productThumbnail || '/images/productThumbnail.jpg'}
                             alt="상품사진"
-                            fill
-                            style={{ objectFit: 'cover' }}
-                            sizes="100vw"
+                            width={500}
+                            height={300}
+                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                            sizes="(max-width: 768px) 100vw, 0px"
+                            priority
                         />
                     </div>
                 )}
@@ -409,7 +370,7 @@ export default function TravelProductDetail() {
                     <div className={style.profile_wrapper}>
                         <div className={style.profile_img}>
                             <Image
-                                src={'/images/profile.png'}
+                                src={'/images/profile.svg'}
                                 alt="판매자"
                                 fill
                                 sizes="40px"
@@ -420,36 +381,6 @@ export default function TravelProductDetail() {
                         </div>
                     </div>
                     <div className={style.mob_btnWrapper}>
-                        {/* {accessToken &&
-                            data?.fetchTravelproduct.seller._id ===
-                                userData?.fetchUserLoggedIn?._id && (
-                                <button onClick={onClickEdit}>
-                                    <div className={style.btn_icon}>
-                                        <Image
-                                            src={imgSrc.edit}
-                                            alt="수정"
-                                            fill
-                                            sizes="24px"
-                                            className={`${style.btn_icon_img} ${style.edit_img}`}
-                                        ></Image>
-                                    </div>
-                                </button>
-                            )}
-                        {accessToken &&
-                            data?.fetchTravelproduct.seller._id ===
-                                userData?.fetchUserLoggedIn?._id && (
-                                <button onClick={onClickDelete}>
-                                    <div className={style.btn_icon}>
-                                        <Image
-                                            src={imgSrc.productDelete}
-                                            alt="삭제"
-                                            fill
-                                            sizes="24px"
-                                            className={`${style.btn_icon_img} ${style.delete_img}`}
-                                        ></Image>
-                                    </div>
-                                </button>
-                            )} */}
                         <button onClick={onClickCopy}>
                             <div className={style.btn_icon}>
                                 <Image

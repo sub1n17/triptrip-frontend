@@ -196,4 +196,7 @@
         font-size: 14px;
     }
 
+    .link_location {
+        gap: 20px;
+    }
 }

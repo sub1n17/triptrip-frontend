@@ -1,5 +1,3 @@
-// 'use client';
-
 import TravelProductBest from '@/components/travelProduct-best';
 import TravelProductList from '@/components/travelProduct-list';
 import style from './styles.module.css';

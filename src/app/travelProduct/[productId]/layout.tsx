@@ -45,8 +45,6 @@ export default async function TravelProductDetailLayout({
     children,
     params,
 }: ITravelProductDetailLayoutProps) {
-    console.log('여기는 서버입니다.');
-
     const graphQLClient = new GraphQLClient('https://main-practice.codebootcamp.co.kr/graphql');
     const data = await graphQLClient.request(FETCH_TRAVEL_PRODUCT, {
         travelproductId: params.productId,

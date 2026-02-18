@@ -15,17 +15,11 @@ export default function Search() {
                     <Image src={imgSrc.search} alt="검색이미지" width={24} height={24}></Image>
                     <input
                         type="text"
-                        // onChange={onChangeSearch}
                         className={style.input_search}
                         placeholder="제목을 검색해 주세요."
                     ></input>
                 </div>
-                <button
-                    // onClick={onClickSearch}
-                    className={style.btn_search}
-                >
-                    검색
-                </button>
+                <button className={style.btn_search}>검색</button>
             </div>
         </div>
     );

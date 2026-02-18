@@ -202,9 +202,4 @@
     .popup :global(.ant-picker-panel:nth-child(2)) {
         display: none;
     }
-
-    /* 두 달력 사이의 세로 구분선 숨김 */
-    /* .popup :global(.ant-picker-panel-container .ant-picker-panels > *:not(:last-child)) {
-        border: none !important;
-    } */
 }

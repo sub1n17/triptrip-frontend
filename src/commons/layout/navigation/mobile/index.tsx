@@ -6,17 +6,17 @@ import { useTokenStore } from '@/commons/stores/token';
 import { usePathname, useRouter } from 'next/navigation';
 
 const imgSrc = {
-    logoImg: '/images/logo.png',
-    profileImg: '/images/profile.png',
-    downArrowImg: '/images/down_arrow.png',
-    chargeImg: '/images/charge.png',
-    logoutImg: '/images/logout.png',
-    pointImg: '/images/myPage_point.png',
-    upArrImg: '/images/up_arrow.png',
-    pointModalImg: '/images/pointModal.png',
-    menuClose: '/images/mob_close.png',
-    mob_logo: '/images/mob_logo.png',
-    backBtn: '/images/mob_back.png',
+    logoImg: '/images/header_logo.svg',
+    profileImg: '/images/profile.svg',
+    downArrowImg: '/icons/down_arrow.svg',
+    chargeImg: '/icons/charge.svg',
+    logoutImg: '/icons/logout.svg',
+    pointImg: '/icons/point.svg',
+    upArrImg: '/icons/up_arrow.svg',
+    pointModalImg: '/images/point_img.svg',
+    menuClose: '/icons/close.svg',
+    mob_logo: '/images/mob_logo.svg',
+    backBtn: '/icons/mob_prev.svg',
 };
 
 export default function NavigationMob() {

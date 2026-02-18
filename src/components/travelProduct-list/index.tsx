@@ -18,42 +18,12 @@ const imgSrc = {
     Accommodation: '/images/Accommodation.png',
     advertiseBanner: '/images/advertiseBanner.png',
     productThumbnail: '/images/productThumbnail.jpg',
-    bookmark: '/images/bookmark.png',
-    profile: '/images/profile.png',
+    bookmark: '/icons/bookmark.svg',
+    profile: '/images/profile.svg',
     recent01: '/images/recent01.jpg',
     recent02: '/images/recent02.jpg',
     recent03: '/images/recent03.jpg',
 };
-
-// const FETCH_TRAVEL_PRODUCTS = gql`
-//     query fetchTravelproducts($isSoldout: Boolean, $page: Int, $search: String) {
-//         fetchTravelproducts(isSoldout: $isSoldout, page: $page, search: $search) {
-//             _id
-//             name
-//             remarks
-//             contents
-//             price
-//             tags
-//             images
-//             pickedCount
-//             travelproductAddress {
-//                 zipcode
-//                 address
-//                 addressDetail
-//                 lat
-//                 lng
-//             }
-//             seller {
-//                 _id
-//                 email
-//                 name
-//             }
-//             soldAt
-//             createdAt
-//             updatedAt
-//         }
-//     }
-// `;
 
 export default function TravelProductList() {
     const searchParams = useSearchParams();
@@ -144,7 +114,7 @@ export default function TravelProductList() {
                     );
                     // ㄴ> el._id !== prevId은 안 되는 이유
                     // : _id(문자열)와 Set(객체)을 비교하면 항상 다르다고 판단되어 중복 제거가 하나도 되지 않음
-                    // Set을 사용하실 때는 반드시 .has() 메서드를 써야 함 - 객체에서 xxx를 갖고 있는지 판단하기
+                    // Set을 사용할 때는 반드시 .has() 메서드를 써야 함 - 객체에서 xxx를 갖고 있는지 판단하기
 
                     return {
                         fetchTravelproducts: [...prev.fetchTravelproducts, ...newProducts],
@@ -259,15 +229,6 @@ export default function TravelProductList() {
                     className={style.bannerImg}
                 />
             </picture>
-            {/* <div className={style.advertiseBannerImg}>
-                <Image
-                    src={imgSrc.advertiseBanner}
-                    alt="advertiseBanner"
-                    fill
-                    sizes=" (max-width: 768px) 100vw, (max-width: 1024px) 100vw, 1280px " // 화면이 768/1024px 이하(모바일, 태블릿)일 땐 100vw, 그보다 클 땐 1200px(최대 크기)로 제한
-                    style={{ objectFit: 'cover' }}
-                ></Image>
-            </div> */}
 
             <div>
                 <div className={style.bold_txt}>여기에서만 예약할 수 있는 숙소</div>
@@ -322,11 +283,6 @@ export default function TravelProductList() {
                                 href={`/travelProduct/${el._id}?${searchParams.toString()}`}
                                 key={el._id}
                                 className={style.product}
-                                // onClick={() =>
-                                //     router.push(
-                                //         `/travelProduct/${el._id}?${searchParams.toString()}`,
-                                //     )
-                                // }
                             >
                                 <div className={style.product_thumbnail}>
                                     <div
@@ -339,9 +295,6 @@ export default function TravelProductList() {
                                                         ? validImg[0]
                                                         : `https://storage.googleapis.com/${validImg[0]}`
                                                     : imgSrc.productThumbnail
-                                                // validImg && validImg.length > 0
-                                                //     ? `https://storage.googleapis.com/${validImg[0]}`
-                                                //     : imgSrc.productThumbnail
                                             }
                                             alt="productThumbnail"
                                             fill

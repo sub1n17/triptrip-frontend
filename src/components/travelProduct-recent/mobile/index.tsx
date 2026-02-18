@@ -10,9 +10,9 @@ import { CloseOutlined } from '@ant-design/icons';
 import { useEffect } from 'react';
 
 const imgSrc = {
-    bookmark: '/images/bookmark.png',
-    profile: '/images/profile.png',
-    close: '/images/close.png',
+    bookmark: '/icons/bookmark.svg',
+    profile: '/images/profile.svg',
+    close: '/icons/close.svg',
 };
 
 interface IRecentMobileProps {
@@ -30,16 +30,13 @@ export default function TravelProductRecentMobile({ isOpen, onCloseRecent }: IRe
         if (isOpen) {
             // document.documentElement = <html> 태그
             document.documentElement.style.overflow = 'hidden';
-            // document.body.style.touchAction = 'none'; // 모바일 터치 액션 제한
         } else {
             document.documentElement.style.overflow = '';
-            // document.body.style.touchAction = '';
         }
 
         // 클린업
         return () => {
             document.documentElement.style.overflow = '';
-            // document.body.style.touchAction = '';
         };
     }, [isOpen]);
 

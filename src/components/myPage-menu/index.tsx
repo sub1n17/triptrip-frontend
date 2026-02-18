@@ -4,7 +4,7 @@ import Image from 'next/image';
 import style from './styles.module.css';
 
 const imgSrc = {
-    rightArr: '/images/myPage_rightArr.png',
+    rightArr: '/icons/my_right.svg',
 };
 
 interface IMyPageMenuProps {

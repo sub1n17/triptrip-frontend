@@ -16,7 +16,6 @@ import { Modal } from 'antd';
 import DaumPostcodeEmbed from 'react-daum-postcode';
 import { FetchTravelproductQuery } from '@/commons/graphql/graphql';
 import InputSoft from '@/commons/ui/input';
-// import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
 import dynamic from 'next/dynamic';
@@ -29,8 +28,8 @@ import { ITravelProductWrite } from './types';
 import { useParams, useRouter } from 'next/navigation';
 
 const imgSrc = {
-    addImage: '/images/add_image.png',
-    imgCloseBtnImage: '/images/imgCloseBtn.png',
+    addImage: '/images/add_image.svg',
+    imgCloseBtnImage: '/images/img_delete.svg',
 };
 
 export default function TravelProductWrite<T extends FetchTravelproductQuery>({

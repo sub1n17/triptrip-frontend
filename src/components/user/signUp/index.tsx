@@ -113,7 +113,7 @@ export default function SignUp() {
             >
                 <div className={style.modal_txt}>회원가입을 축하드립니다.</div>
                 <Image
-                    src={'/images/signup_logo.png'}
+                    src={'/images/signup.svg'}
                     alt="trip trip"
                     width={77}
                     height={48}

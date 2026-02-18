@@ -28,14 +28,3 @@ export const DELETE_BOARD = gql`
         deleteBoard(boardId: $boardId)
     }
 `;
-
-// // 본인인지 확인 -> 직접 작성한 게시글만 삭제
-// export const FETCH_USER_LOGIN = gql`
-//     query fetchUserLoggedIn {
-//         fetchUserLoggedIn {
-//             _id
-//             email
-//             name
-//         }
-//     }
-// `;

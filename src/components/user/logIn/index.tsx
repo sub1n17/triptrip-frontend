@@ -8,7 +8,7 @@ import { useSearchParams } from 'next/navigation';
 import { message } from 'antd';
 
 const imgSrc = {
-    userLogo: '/images/user_logo.png',
+    userLogo: '/images/login.svg',
 };
 
 export default function LogIn() {

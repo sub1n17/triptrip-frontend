@@ -7,7 +7,6 @@ import { FetchBoardCommentsDocument, FetchBoardCommentsQuery } from '@/commons/g
 import Rating from '@mui/material/Rating';
 import { styled } from '@mui/material/styles';
 import { useState } from 'react';
-// import { useState } from 'react';
 
 export default function UseCommentList() {
     //  URI의 boardId를 가져오기
@@ -19,7 +18,6 @@ export default function UseCommentList() {
             boardId: String(params.boardId),
         },
     });
-    // console.log(data);
 
     // 별점 주기 - MUI Rating
     const StyledRating = styled(Rating)({
@@ -56,6 +54,7 @@ export default function UseCommentList() {
                     return prev; // 지금까지 보여준 모든 댓글들이 누적되어 있는 prev를 보여줘
                 }
                 return {
+                    __typename: 'Query',
                     fetchBoardComments: [
                         ...(prev.fetchBoardComments ?? []), // 데이터를 늦게 받아올 수도 있는데 그때 undefined일 수도 있으니까 그럴 땐 안전하게 배열로 만들어줌
                         ...fetchMoreResult.fetchBoardComments,

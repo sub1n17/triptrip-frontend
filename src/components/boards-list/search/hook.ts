@@ -4,7 +4,7 @@ import _ from 'lodash';
 import { ChangeEvent, useEffect, useMemo, useState } from 'react';
 import { IUseBoardSearchProps } from './type';
 import { RangePickerProps } from 'antd/es/date-picker';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 export default function useBoardSearch({
     // keyword,
@@ -15,24 +15,6 @@ export default function useBoardSearch({
     setTravelQueryString,
     travelQueryString,
 }: IUseBoardSearchProps) {
-    // const searchParams = useSearchParams();
-
-    // const dateStart = searchParams.get('dateStart');
-    // const dateEnd = searchParams.get('dateEnd');
-
-    // 날짜 지정
-    // const [datePick, setDatePick] = useState<(Date | null)[]>([]);
-    // const [datePick, setDatePick] = useState<[Dayjs | null, Dayjs | null] | null>(null);
-
-    // useEffect(() => {
-    //     if (dateStart && dateEnd) {
-    //         setDatePick([dayjs(dateStart), dayjs(dateEnd)]);
-    //     }
-    //     // else {
-    //     //     setDatePick(null);
-    //     // }
-    // }, [dateStart, dateEnd]);
-
     //  렌더될 때마다 debounce가 새로 생성되지 않게 메모이제이션
     const getDebounce = useMemo(
         () =>
@@ -54,7 +36,7 @@ export default function useBoardSearch({
                     soldOutCount: 8,
                 }));
             }, 300),
-        []
+        [],
     );
 
     // 디바운스 클린업
@@ -72,11 +54,17 @@ export default function useBoardSearch({
         setInputValue('');
     }, [travelQueryString?.tabMenu]);
 
-    // 숙박권 - 상세 → 목록으로 갈 때 검색어 value 유지하기
+    const searchParams = useSearchParams();
+    const search = searchParams.get('search');
+
+    // 상세 → 목록으로 갈 때 검색어 value 유지하기
     useEffect(() => {
-        if (!pathname.includes('/travelProduct')) return;
-        if (travelQueryString?.search) setInputValue(travelQueryString.search);
-    }, []);
+        if (search) {
+            setInputValue(search);
+        } else {
+            setInputValue('');
+        }
+    }, [search]);
 
     // 검색하기
     const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
@@ -123,9 +111,6 @@ export default function useBoardSearch({
         const dateStart = date[0].format('YYYY-MM-DD 00:00:00');
         const dateEnd = date[1].format('YYYY-MM-DD 23:59:59');
 
-        // 한국 시간 보정 (+9시간)
-        // const offset = 9 * 60 * 60 * 1000;
-
         setQueryString?.((prev) => ({
             ...prev,
             dateStart: dateStart,
@@ -138,8 +123,8 @@ export default function useBoardSearch({
     const pathname = usePathname();
 
     const onClickNew = () => {
-        if (pathname === '/boards') router.push('/boards/new'); // 로그인 되어 있으면 이동
-        if (pathname === '/travelProduct') router.push('/travelProduct/new'); // 로그인 되어 있으면 이동
+        if (pathname === '/boards') router.push('/boards/new');
+        if (pathname === '/travelProduct') router.push('/travelProduct/new');
     };
 
     return { onChangeSearch, onClickSearch, onChangeDate, onClickNew, inputValue };

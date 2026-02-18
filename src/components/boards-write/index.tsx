@@ -12,15 +12,9 @@ import { Modal, Input, Space } from 'antd';
 // react-daum-postcode - 우편번호검색
 import DaumPostcodeEmbed from 'react-daum-postcode';
 
-// import addImage from '../../../images/add_image.png';
-// ㄴ> 오류나는 이유: TypeScript는 기본적으로 .ts/.tsx 파일 타입만 알 수 있음
-// .png 같은 이미지 파일은 타입 정의가 없으면 모듈로 인식하지 못함
-// 해결방법: require써서 타입을 체크하지 않고 그냥 any 타입으로 받아줌
-// 이미지가 많을 때 객체로 모아서 사용하면 됨
 const imgSrc = {
-    // addImage: require('../../../images/add_image.png'), -> 옛날방식으므로 현재는 절대경로/import해서 사용함
-    addImage: '/images/add_image.png',
-    imgCloseBtnImage: '/images/imgCloseBtn.png',
+    addImage: '/images/add_image.svg',
+    imgCloseBtnImage: '/images/img_delete.svg',
 };
 
 export default function BoardWritePage(props: IBoardWriteProps) {

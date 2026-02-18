@@ -1,13 +1,10 @@
 'use client';
 
 import { useQuery } from '@apollo/client';
-// import { FETCH_BOARDS } from '../boards-list/list/queries';
 import Image from 'next/image';
 import style from './styles.module.css';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { FetchBoardsDocument } from '@/commons/graphql/graphql';
@@ -59,7 +56,7 @@ export default function BoardBest() {
                                     <div className={style.profile_wrapper}>
                                         <div className={style.profile}>
                                             <Image
-                                                src={'/images/profile.png'}
+                                                src={'/images/profile.svg'}
                                                 alt="프로필"
                                                 fill
                                                 sizes="24px"
@@ -72,7 +69,7 @@ export default function BoardBest() {
                                     <div className={style.like}>
                                         <div className={style.best}>
                                             <Image
-                                                src={'/images/best_heart.png'}
+                                                src={'/icons/best_heart.svg'}
                                                 alt="좋아요"
                                                 fill
                                                 sizes="24px"
@@ -127,7 +124,7 @@ export default function BoardBest() {
                                             <div className={style.profile_wrapper}>
                                                 <div className={style.profile}>
                                                     <Image
-                                                        src={'/images/profile.png'}
+                                                        src={'/images/profile.svg'}
                                                         alt="프로필"
                                                         fill
                                                         sizes="24px"
@@ -140,7 +137,7 @@ export default function BoardBest() {
                                             <div className={style.like}>
                                                 <div className={style.best}>
                                                     <Image
-                                                        src={'/images/best_heart.png'}
+                                                        src={'/icons/best_heart.svg'}
                                                         alt="좋아요"
                                                         fill
                                                         sizes="24px"

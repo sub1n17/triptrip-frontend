@@ -5,9 +5,7 @@ import useBoardList from './hook';
 import { IBoardList } from './type';
 
 export default function BoardList({ data, keyword, refetch, activePage }: IBoardList) {
-    const {
-        onClickDetail, //onClickDelete
-    } = useBoardList({ refetch });
+    const { onClickDetail } = useBoardList({ refetch });
 
     return (
         <>
@@ -39,12 +37,6 @@ export default function BoardList({ data, keyword, refetch, activePage }: IBoard
                                         .map((el, index) => (
                                             <span
                                                 key={`${el}_${index}`}
-                                                // style={{ color: el === keyword ? 'red' : 'black' }}
-                                                // style={{ color: el === keyword ? 'black' : '#999' }}
-                                                // style={{
-                                                //     backgroundColor:
-                                                //         el === keyword ? '#fff1b8' : 'transparent',
-                                                // }}
                                                 style={{
                                                     backgroundColor:
                                                         el === keyword ? '#d6ebff' : 'transparent',
@@ -58,21 +50,6 @@ export default function BoardList({ data, keyword, refetch, activePage }: IBoard
                                 <div className={style.board_date}>
                                     {el.createdAt.slice(0, 10).split('-').join('.')}
                                 </div>
-                                {/* ㄴ> slice(a, b) => a부터 b전까지만 뽑아줘 / split('a') => a를 기준으로 나눠줘*/}
-
-                                {/* <div
-                                className={style.delete}
-                                onClick={(event) => onClickDelete(event, el._id)}
-                            >
-                                <Image
-                                    src={imgSrc.deleteImg}
-                                    alt="삭제이미지"
-                                    width={100}
-                                    height={100}
-                                    style={{ width: '100%', height: 'auto' }}
-                                    sizes="100vw"
-                                ></Image>
-                            </div> */}
                             </button>
                         ))
                     )}

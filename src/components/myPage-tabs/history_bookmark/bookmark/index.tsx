@@ -5,20 +5,6 @@ import style from './styles.module.css';
 import { useRouter } from 'next/navigation';
 import { FetchTravelproductsIPickedDocument } from '@/commons/graphql/graphql';
 
-// const FETCH_TRAVELPRODUCTS_IPICKED = gql`
-//     query fetchTravelproductsIPicked($search: String, $page: Int) {
-//         fetchTravelproductsIPicked(search: $search, page: $page) {
-//             _id
-//             name
-//             price
-//             seller {
-//                 name
-//             }
-//             createdAt
-//         }
-//     }
-// `;
-
 export default function Bookmark() {
     const { data } = useQuery(FetchTravelproductsIPickedDocument, {
         variables: { search: '', page: 1 },

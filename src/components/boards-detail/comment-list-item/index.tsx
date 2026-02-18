@@ -17,10 +17,9 @@ import { gql, useMutation } from '@apollo/client';
 import { Input, message, Modal, Space } from 'antd';
 
 const imgSrc = {
-    profileImg: '/images/profile.png',
-    commentListStarsImg: '/images/commentList_star.png',
-    editImg: '/images/edit.png',
-    closeImg: '/images/close.png',
+    profileImg: '/images/profile.svg',
+    editImg: '/icons/edit.svg',
+    closeImg: '/icons/close.svg',
 };
 interface ICommentListProps {
     el: FetchBoardCommentsQuery['fetchBoardComments'][0];
@@ -112,7 +111,13 @@ export default function CommentItem({ el }: ICommentListProps) {
                         <div className={style.list_top}>
                             <div className={style.top_left}>
                                 <div className={style.profileImg}>
-                                    <Image src={imgSrc.profileImg} alt="profileImg" fill></Image>
+                                    <Image
+                                        src={imgSrc.profileImg}
+                                        alt="profileImg"
+                                        width={24}
+                                        height={24}
+                                        sizes="24px"
+                                    ></Image>
                                 </div>
                                 <div className={style.comment_writer}>{el.writer}</div>
                                 <StyledRating
@@ -136,15 +141,17 @@ export default function CommentItem({ el }: ICommentListProps) {
                                             alt="editImg"
                                             width={20}
                                             height={20}
+                                            sizes="24px"
                                             style={{ width: '20px', height: '20px' }}
                                         ></Image>
                                     </button>
                                     <button onClick={onClickDelete}>
                                         <Image
                                             src={imgSrc.closeImg}
-                                            alt="editImg"
+                                            alt="deleteImg"
                                             width={20}
                                             height={20}
+                                            sizes="24px"
                                             style={{ width: '20px', height: '20px' }}
                                         ></Image>
                                     </button>

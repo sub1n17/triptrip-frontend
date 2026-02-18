@@ -9,15 +9,15 @@ import UseNavigation from '../hook';
 import { useTokenStore } from '@/commons/stores/token';
 
 const imgSrc = {
-    logoImg: '/images/logo.png',
-    profileImg: '/images/profile.png',
-    downArrowImg: '/images/down_arrow.png',
-    rightIconImg: '/images/right_icon.png',
-    chargeImg: '/images/charge.png',
-    logoutImg: '/images/logout.png',
-    pointImg: '/images/myPage_point.png',
-    upArrImg: '/images/up_arrow.png',
-    pointModalImg: '/images/pointModal.png',
+    logoImg: '/images/header_logo.svg',
+    profileImg: '/images/profile.svg',
+    downArrowImg: '/icons/down_arrow.svg',
+    rightIconImg: '/icons/login_right.svg',
+    chargeImg: '/icons/charge.svg',
+    logoutImg: '/icons/logout.svg',
+    pointImg: '/icons/point.svg',
+    upArrImg: '/icons/up_arrow.svg',
+    pointModalImg: '/images/point_img.svg',
 };
 
 export default function NavigationPc() {
@@ -49,7 +49,8 @@ export default function NavigationPc() {
                                     alt="logoImg"
                                     width={0}
                                     height={0}
-                                    sizes="100vw"
+                                    sizes="55px"
+                                    priority
                                 ></Image>
                             </Link>
                         </h1>
@@ -92,6 +93,7 @@ export default function NavigationPc() {
                                             alt="profileImg"
                                             fill
                                             sizes="24px"
+                                            priority
                                         ></Image>
                                     </div>
                                     <div className={style.downArrowImg}>
@@ -118,6 +120,7 @@ export default function NavigationPc() {
                                                     alt="profileImg"
                                                     fill
                                                     sizes="24px"
+                                                    priority
                                                 ></Image>
                                             </div>
                                             <div> {data.fetchUserLoggedIn.name}</div>

@@ -12,10 +12,10 @@ import { FETCH_TRAVEL_PRODUCT } from '../detail/queries';
 import { useParams } from 'next/navigation';
 
 const imgSrc = {
-    profileImg: '/images/profile.png',
-    reply: '/images/reply.png',
-    pencil: '/images/pencil.png',
-    close: '/images/close.png',
+    profileImg: '/images/profile.svg',
+    reply: '/icons/reply.svg',
+    pencil: '/icons/edit.svg',
+    close: '/icons/close.svg',
 };
 
 const DELETE_TRAVEL_PRODUCT_QUESTION = gql`
@@ -109,7 +109,7 @@ export default function InquiryListItem({ el, borderStyle }: IInquiryListItemPro
                                         const deletedId = data?.deleteTravelproductQuestion;
                                         const filteredId = prev.filter(
                                             (el: FetchTravelproductQuestionsQuery) =>
-                                                readField('_id', el) !== deletedId
+                                                readField('_id', el) !== deletedId,
                                         );
                                         return [...filteredId];
                                     },
@@ -126,12 +126,6 @@ export default function InquiryListItem({ el, borderStyle }: IInquiryListItemPro
             },
         });
     };
-
-    // 댓글 삭제 모달
-    // const [isModalOpen, setIsModalOpen] = useState(false);
-    // const onClickModal = () => {
-    //     setIsModalOpen((prev) => !prev);
-    // };
 
     return (
         <div className={style.inquiry_wrapper} style={borderStyle}>
@@ -209,18 +203,6 @@ export default function InquiryListItem({ el, borderStyle }: IInquiryListItemPro
 
             {/*  대댓글 목록 */}
             <InquiryReplyList questionId={el._id} />
-
-            {/* 댓글 삭제 모달 */}
-            {/* <Modal
-                open={isModalOpen}
-                onOk={onClickDelete}
-                onCancel={onClickModal}
-                // footer={null}
-                centered
-                // wrapClassName={style.pointModal}
-            >
-                <div className={style.modal_btn}>댓글을 삭제하시겠습니까?</div>
-            </Modal> */}
         </div>
     );
 }

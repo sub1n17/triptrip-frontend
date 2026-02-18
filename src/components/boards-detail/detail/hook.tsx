@@ -25,7 +25,6 @@ export default function useBoardDetail() {
             boardId: String(params.boardId),
         },
     });
-    // console.log(data);
 
     // 게시판 목록 페이지로 이동
     const searchParams = useSearchParams();

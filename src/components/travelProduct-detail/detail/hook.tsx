@@ -4,8 +4,6 @@ import { useParams, usePathname, useRouter, useSearchParams } from 'next/navigat
 import {
     CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING,
     DELETE_PRODUCT,
-    // FETCH_TRAVEL_PRODUCT,
-    // FETCH_USER_LOGIN,
     IKakaoAddressResult,
     TOGGLE_TRAVEL_PRODUCT_PICK,
 } from './queries';
@@ -17,10 +15,6 @@ import {
     FetchUserLoggedInDocument,
 } from '@/commons/graphql/graphql';
 import { useTokenStore } from '@/commons/stores/token';
-
-// declare const window: Window & {
-//     kakao: any;
-// };
 
 export default function UseTravelProductDetail() {
     const params = useParams();
@@ -124,6 +118,7 @@ export default function UseTravelProductDetail() {
 
     const pathname = usePathname();
     const searchParams = useSearchParams();
+
     // 구매하기 버튼 클릭
     const onClickModalOpen = () => {
         if (!accessToken) {
@@ -139,6 +134,7 @@ export default function UseTravelProductDetail() {
         setModalType('yesOrNo');
     };
 
+    const search = searchParams.get('search') || null;
     // 모달 - 구매 클릭
     const onClickBuy = async () => {
         try {
@@ -153,7 +149,17 @@ export default function UseTravelProductDetail() {
                     },
                     {
                         query: FetchTravelproductsDocument,
-                        variables: { page: 1 },
+                        variables: {
+                            isSoldout: false,
+                            search: search,
+                        },
+                    },
+                    {
+                        query: FetchTravelproductsDocument,
+                        variables: {
+                            isSoldout: true,
+                            search: search,
+                        },
                     },
                 ],
             });
@@ -198,7 +204,7 @@ export default function UseTravelProductDetail() {
                 const mapContainer = document.getElementById('map');
                 if (!mapContainer) return;
 
-                // ✅ 1. lat/lng가 있을 때
+                // 1. lat/lng가 있을 때
                 if (lat && lng && lat !== 0 && lng !== 0) {
                     const map = new window.kakao.maps.Map(mapContainer, {
                         center: new window.kakao.maps.LatLng(lat, lng),
@@ -213,7 +219,7 @@ export default function UseTravelProductDetail() {
                     return;
                 }
 
-                // ✅ 2. lat/lng 없고 주소만 있을 때 (fallback)
+                // 2. lat/lng 없고 주소만 있을 때
                 if (address) {
                     const geocoder = new window.kakao.maps.services.Geocoder();
 
@@ -242,26 +248,6 @@ export default function UseTravelProductDetail() {
                 }
             });
         };
-
-        // lat, lng으로만 지도 표시함
-        // script.onload = () => {
-        //     window.kakao.maps.load(function () {
-        //         const mapContainer = document.getElementById('map'), // 지도를 표시할 div
-        //             mapOption = {
-        //                 center: new window.kakao.maps.LatLng(lat, lng), // 지도의 중심좌표
-        //                 level: 3, // 지도의 확대 레벨
-        //             };
-        //         const map = new window.kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-        //         // 마커가 표시될 위치입니다
-        //         const markerPosition = new window.kakao.maps.LatLng(lat, lng);
-        //         // 마커를 생성합니다
-        //         const marker = new window.kakao.maps.Marker({
-        //             position: markerPosition,
-        //         });
-        //         // 마커가 지도 위에 표시되도록 설정합니다
-        //         marker.setMap(map);
-        //     });
-        // };
     }, [data]);
 
     return {

@@ -6,7 +6,7 @@ import { IInquiryWriteProps } from './type';
 import UseInquiryWrite from './hooks';
 
 const imgSrc = {
-    chat: '/images/chat.png',
+    chat: '/icons/chat.svg',
 };
 
 export default function InquiryWrite(props: IInquiryWriteProps) {
@@ -81,10 +81,10 @@ export default function InquiryWrite(props: IInquiryWriteProps) {
                         isAnswer
                             ? onClickAnswer // 답변하기
                             : isEdit
-                            ? onClickEdit // 수정하기
-                            : isAnswerEdit
-                            ? onClickAnswerEdit // 답변 수정하기
-                            : onClickQuestion // 문의하기
+                              ? onClickEdit // 수정하기
+                              : isAnswerEdit
+                                ? onClickAnswerEdit // 답변 수정하기
+                                : onClickQuestion // 문의하기
                     }
                     disabled={isButtonDisabled}
                 >
