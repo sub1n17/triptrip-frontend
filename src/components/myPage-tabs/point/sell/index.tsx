@@ -1,9 +1,23 @@
 'use client';
 
-import { useQuery } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 import PointListItem from '../common/listItem/listItem';
 import style from './styles.module.css';
 import { FetchPointTransactionsOfSellingDocument } from '@/commons/graphql/graphql';
+
+export const FETCH_POINT_TRANSACTIONS_OF_SELLING = gql`
+    query FetchPointTransactionsOfSelling($search: String, $page: Int) {
+        fetchPointTransactionsOfSelling(search: $search, page: $page) {
+            _id
+            createdAt
+            amount
+            balance
+            travelproduct {
+                name
+            }
+        }
+    }
+`;
 
 export default function Sell() {
     const { data } = useQuery(FetchPointTransactionsOfSellingDocument, {
