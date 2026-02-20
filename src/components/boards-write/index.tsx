@@ -77,6 +77,7 @@ export default function BoardWritePage(props: IBoardWriteProps) {
                             비밀번호 <span>*</span>
                         </p>
                         <input
+                            type="password"
                             placeholder="비밀번호를 입력해 주세요."
                             onChange={onChangePassword}
                             className={style.input_wrapperInput}
