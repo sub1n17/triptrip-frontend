@@ -20,7 +20,10 @@ export default function BoardBest() {
     const fetchBoards = data?.fetchBoards ?? [];
 
     // 베스트 게시글 4개 중 좋아요 없는 게시글이 있으면 최근 게시글로 채우기
-    const likedBoards = fetchBoards.filter((el) => el.likeCount > 0);
+    const likedBoards = fetchBoards
+        .filter((el) => el.likeCount > 0)
+        .sort((a, b) => b.likeCount - a.likeCount);
+
     let bestBoards = likedBoards.slice(0, 4);
 
     if (bestBoards.length < 4) {
