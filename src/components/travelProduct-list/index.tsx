@@ -354,7 +354,7 @@ export default function TravelProductList() {
                                     <div className={style.price}>
                                         {travelQueryString.tabMenu === 'onSale' ? (
                                             <>
-                                                {el.price} <span>원</span>
+                                                {el.price?.toLocaleString()} <span>원</span>
                                             </>
                                         ) : (
                                             <div className={style.soldOut}>판매완료</div>
