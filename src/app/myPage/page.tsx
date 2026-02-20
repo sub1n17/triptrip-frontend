@@ -32,7 +32,9 @@ const FETCH_USER_LOGGED_IN = gql`
 function MyPage() {
     const [activeTab, setActiveTab] = useState('history');
 
-    const { data } = useQuery(FETCH_USER_LOGGED_IN);
+    const { data } = useQuery(FETCH_USER_LOGGED_IN, {
+        fetchPolicy: 'network-only',
+    });
 
     return (
         <main className={style.myPage_wrapper}>
@@ -56,7 +58,7 @@ function MyPage() {
                         <Image src={imgSrc.point} alt="포인트" fill sizes="24px"></Image>
                     </div>
                     <div className={style.point_txt}>
-                        {data?.fetchUserLoggedIn.userPoint.amount} P
+                        {data?.fetchUserLoggedIn.userPoint.amount.toLocaleString()} P
                     </div>
                 </div>
                 <MyPageMenu activeTab={activeTab} setActiveTab={setActiveTab}></MyPageMenu>

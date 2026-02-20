@@ -146,7 +146,7 @@ export default function NavigationPc() {
                                             ></Image>
                                         </div>
                                         <div className={style.myPoint}>
-                                            {data.fetchUserLoggedIn.userPoint.amount}
+                                            {data.fetchUserLoggedIn.userPoint.amount.toLocaleString()}
                                             <span>P</span>
                                         </div>
                                     </div>
