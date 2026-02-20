@@ -49,7 +49,6 @@ export default function UseNavigation() {
     // 포인트 충전 select
     const [selectedAmount, setSelectedAmount] = useState('100'); // 선택된 금액 저장
     const handleChange = (value: string) => {
-        console.log(`selected ${value}`);
         setSelectedAmount(value.replace(/,/g, '')); // 선택할 때마다 상태에 저장, 쉼표 제거
     };
 
@@ -67,13 +66,12 @@ export default function UseNavigation() {
                 channelKey: 'channel-key-1dc10cea-ec89-471d-aedf-f4bd68993f33',
                 payMethod: 'EASY_PAY',
             });
-            console.log(result);
 
             //  결제 성공
             if (result?.transactionType === 'PAYMENT' && !result?.code) {
                 message.success('포인트가 충전되었습니다.');
 
-                const chargeResult = await createPointTransactionOfLoading({
+                await createPointTransactionOfLoading({
                     variables: {
                         paymentId: result.paymentId,
                     },
@@ -89,7 +87,6 @@ export default function UseNavigation() {
                         },
                     ],
                 });
-                console.log(chargeResult);
             } else {
                 message.error('포인트가 충전되지 않았습니다.');
             }
@@ -98,7 +95,7 @@ export default function UseNavigation() {
         }
     };
 
-    const { data } = useQuery(FETCH_USER_LOGGED_IN);
+    const { data } = useQuery(FETCH_USER_LOGGED_IN, { fetchPolicy: 'network-only' });
 
     // 로그아웃
     const [logout] = useMutation(LOGOUT);
@@ -106,6 +103,7 @@ export default function UseNavigation() {
     const onClickLogout = async () => {
         await logout();
         setAccessToken(''); // 토큰 지우기
+        router.replace('/');
     };
 
     return {
