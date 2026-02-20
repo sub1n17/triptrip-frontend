@@ -15,7 +15,7 @@ import { message, Modal } from 'antd';
 const imgSrc = {
     profileImg: '/images/profile.svg',
     return: '/icons/return.svg',
-    pencil: '/icons/pencil.svg',
+    pencil: '/icons/edit.svg',
     close: '/icons/close.svg',
 };
 
