@@ -303,6 +303,7 @@ export default function useBoardsWrite(props: IBoardWriteProps) {
                 // 입력 다 됐을 때 버튼 활성화시키기
                 if (boardInput && password !== '') {
                     router.replace(`/boards/${result?.data?.createBoard._id}`);
+                    window.scrollTo(0, 0);
                     message.success('게시글이 등록되었습니다.');
                 }
                 return;
