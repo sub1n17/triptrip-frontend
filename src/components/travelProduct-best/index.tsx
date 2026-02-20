@@ -8,7 +8,6 @@ import Image from 'next/image';
 import style from './styles.module.css';
 import { useQuery } from '@apollo/client';
 import Link from 'next/link';
-import DOMPurify from 'dompurify';
 import {
     FetchTravelproductsDocument,
     FetchTravelproductsOfTheBestDocument,
@@ -101,11 +100,7 @@ export default function TravelProductBest() {
                                     <div className={style.txt_wrapper}>
                                         <div>
                                             <div className={style.best_title}>{el.name}</div>
-                                            <div
-                                                dangerouslySetInnerHTML={{
-                                                    __html: DOMPurify.sanitize(el.contents),
-                                                }}
-                                            />
+                                            <div>{el.remarks}</div>
                                         </div>
                                         <div className={style.best_price}>
                                             {el.price?.toLocaleString()} 원
