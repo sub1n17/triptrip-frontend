@@ -56,10 +56,12 @@ export default function PointListItem(props: IPointListItemProps) {
                     >
                         {props.type === 'buy' || props.status === '구매'
                             ? props.amount
-                            : `+${props.amount}`}
+                            : `+${props.amount.toLocaleString()}`}
                     </div>
                 )}
-                {props.balance && <div className={style.list_balance}>{props.balance}</div>}
+                {props.balance && (
+                    <div className={style.list_balance}>{props.balance.toLocaleString()}</div>
+                )}
                 {props.seller && <div className={style.list_seller}>{props.seller}</div>}
             </button>
         </>

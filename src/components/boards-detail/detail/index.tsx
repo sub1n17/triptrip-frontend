@@ -127,6 +127,7 @@ export default function BoardDetail({ isCommentEdit }: { isCommentEdit?: boolean
                         <p>목록으로</p>
                     </button>
 
+                    {/* 비로그인 유저도 작성 가능한 구조라서 로그인 기반으로 버튼 조건부 렌더링 불가 */}
                     <button className={style.modify_wrapper} onClick={onClickEdit}>
                         <div className={style.pencilImg}>
                             <Image
