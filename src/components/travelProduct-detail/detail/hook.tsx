@@ -28,7 +28,7 @@ export default function UseTravelProductDetail() {
     const { accessToken } = useTokenStore();
 
     const { data: userData } = useQuery(FetchUserLoggedInDocument, {
-        // skip: !accessToken,
+        fetchPolicy: 'network-only',
     });
     const { data } = useQuery(FetchTravelproductDocument, {
         variables: {

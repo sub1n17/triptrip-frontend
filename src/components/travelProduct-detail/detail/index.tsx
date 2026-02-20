@@ -11,7 +11,7 @@ import 'react-quill/dist/quill.snow.css';
 import UseTravelProductDetail from './hook';
 import { message, Modal, Popover, Tooltip } from 'antd';
 import { usePointModalStore } from '@/commons/stores/pointModal';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { useTokenStore } from '@/commons/stores/token';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -59,6 +59,12 @@ export default function TravelProductDetail() {
         onClickCopy,
     } = UseTravelProductDetail();
 
+    // 토큰 가져오기
+    const { accessToken } = useTokenStore();
+
+    // 페이지 이동 시 zustand 초기화되면서 토큰 사라짐 방지
+    const [isMount, setIsMount] = useState(false);
+
     const { openChargeModal } = usePointModalStore();
 
     const searchParams = useSearchParams();
@@ -85,6 +91,9 @@ export default function TravelProductDetail() {
 
         // 상세페이지로 이동 시 스크롤 최상단
         window.scrollTo(0, 0);
+
+        // 페이지 이동 시 zustand 다시 가져오기
+        setIsMount(true);
     }, []);
 
     useEffect(() => {
@@ -103,8 +112,6 @@ export default function TravelProductDetail() {
         const updated = [current, ...filtered].slice(0, 20);
         localStorage.setItem('recent', JSON.stringify(updated));
     }, [data]);
-
-    const { accessToken } = useTokenStore();
 
     // 더보기 드롭다운
     const items: MenuProps['items'] = [
@@ -192,7 +199,8 @@ export default function TravelProductDetail() {
                             <div>{data?.fetchTravelproduct.pickedCount ?? 0} </div>
                         </button>
 
-                        {accessToken &&
+                        {isMount &&
+                            accessToken &&
                             data?.fetchTravelproduct.seller?._id ===
                                 userData?.fetchUserLoggedIn?._id && (
                                 <button className={style.btn_icon}>
